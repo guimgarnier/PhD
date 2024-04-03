@@ -1,0 +1,40 @@
+```{r}
+
+library('goft')
+options(repr.plot.width = 15, repr.plot.height = 10)
+
+drops_WT<- -sapply(microMA_WT_growthRates, diff)
+drops_WT <- drops_WT[drops_WT != 0 & is.finite(drops_WT)]
+
+par(mfrow=c(2,1))
+limit = 0.01
+drops_WT_dty <- hist(drops_WT, breaks=500, probability = TRUE, main="Distribution of gross growth rate changes")
+drops_WT_norm_dty <- dnorm(drops_WT_dty$mids, mean(drops_WT[abs(drops_WT)<limit]), sd(drops_WT[abs(drops_WT)<limit]))
+
+drops_WT_dty2 <- hist(drops_WT, breaks=1000, probability = TRUE, xlim=c(-0.02,0.02), main="Distribution of gross growth rate changes")
+drops_WT_norm_dty2 <- dnorm(drops_WT_dty2$mids, mean(drops_WT[abs(drops_WT)<limit]), sd(drops_WT[abs(drops_WT)<limit]))
+
+# Gaussian test ?  :
+drops_WT_sd = sd(drops_WT,na.rm=TRUE)
+drops_WT_mean = mean(drops_WT,na.rm=TRUE)
+drops_WT_norm = (drops_WT-drops_WT_mean)/drops_WT_sd
+
+print(var(drops_WT_norm))
+
+shapiro.test(drops_WT_norm[1:5000])
+#lnorm_test(drops_WT_norm[1:5000])
+ks.test(drops_WT_norm[1:5000], "pnorm")
+```
+
+## Print the real data
+
+```{r}
+options(repr.plot.width = 15, repr.plot.height = 10)
+
+growth_MutH <- -sapply(microMA_MutH_growthRates, diff)
+growth_MutH <- drops_MutH[drops_MutH != 0 & is.finite(drops_MutH)]
+
+par(mfrow=c(2,1))
+limit = 0.012
+
+drops_MutH_hist <- hist(growth_MutH, breaks=1000, probability = TRUE, xlim=c(-0.02,0.02), main="Distribution of gross growth rate changes")

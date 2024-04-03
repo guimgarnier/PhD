@@ -1,0 +1,268 @@
+---
+title: "Use the R-multimode package on the data of Lydia"
+---
+
+This document presents the various modules of the Multimode package of R. A complete presentation of the package can be found on the [documentation](https://cran.r-project.org/web/packages/multimode/multimode.pdf).
+
+```{r}
+library(multimode)
+library(mclust)
+```
+
+
+# Gaussian mixture
+
+This part of the code generates a sample from a Gaussian mixture. 
+
+```{r}
+size <- 500
+
+simdata = sim(modelName = "V",
+              parameters = list(pro = c(0.85, 0.15),
+                                mean = c(0, -5),
+                                variance = list(modelName = "V", 
+                                                d = 1, 
+                                                G = 2,
+                                                sigmasq = c(0.5, 3))),
+              n = size)
+#plot(scale(simdata[,2]), type = "h")
+hist(simdata[,2], breaks=20)
+```
+
+## Several test for multimodality
+### We use the Mclust package on this dataset to fit with gaussian mixture. 
+
+mclust is a contributed R package for model-based clustering, classification, and density estimation based on finite normal mixture modelling. It provides functions for parameter estimation via the EM algorithm for normal mixture models with a variety of covariance structures, and functions for simulation from these models. 
+A complete presentation of the package can be found on the [documentation](https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html).
+
+> Here, we estimate the model parameters on the assumption that there are two peaks. This is reflected in the choice of parameter $G = 2$ in the code. 
+
+```{r}
+simdata.gmm = Mclust(simdata, G=2)
+summary(simdata.gmm)
+#simdata.gmm$parameters
+simdata.gmm$parameters$pro
+simdata.gmm$parameters$mean
+simdata.gmm$parameters$variance$sigmasq
+
+#simdata2.gmm = Mclust(simdata, G=2)
+#summary(simdata2.gmm)
+#simdata2.gmm$parameters
+```
+
+### Multimode Package
+
+In this section, we try out the different methods of the multimode package. 
+
+- The Ameijeras-Alonso test 
+- The Silverman test
+- The Dip test
+- The excess mass test
+
+> For each test, we test the Null Hypothesis : There is more than one mode. If the p-value $\in [0, 0.05]$, we reject this hypothesis. 
+
+We try to localize the mod the the function **locmode** of this package. 
+```{r}
+# Kernel density estimation with two modes
+locmodes(simdata,mod0=2,display=TRUE,xlab="loc of the mode")
+```
+
+#### Ameijeiras-Alonso ACR
+
+```{r}
+modetest(simdata,mod0=1,method="ACR",B=5,n=NULL,tol=NULL)
+```
+
+#### Silverman
+
+```{r}
+modetest(simdata,mod0=1,method="SI",B=5,submethod=NULL,n=NULL,tol=NULL)
+modetest(simdata,mod0=1,method="SI",B=5,submethod=1,n=NULL,tol=NULL)
+```
+
+
+#### The Dip Test (HH)
+
+```{r}
+modetest(simdata,mod0=1,method="HH",B=5,n=NULL,tol=NULL)
+```
+
+#### The Excess Mass test (FM)
+
+```{r}
+modetest(simdata,mod0=1,method="FM",B=5,n=NULL,tol=NULL)
+```
+
+
+# Simulate a compound Poisson processes
+
+
+
+
+
+This code simulate the Poisson processes at each observations
+
+Choose a random distribution
+```{r}
+K <- 2
+pi_raw <- rexp(K)
+theta <- list(pi = pi_raw/sum(pi_raw),
+             mu = rnorm(K, 0, 10),
+             sigma = abs(rnorm(K, 0, 3)))
+
+rnormmix <- function(n,theta){
+  y <-apply(rmultinom(n, size = 1, prob = theta$pi),2,function(col) which(col==1))
+  # generate sample
+  return(data.frame(x=rnorm(n, theta$mu[y], theta$sigma[y]),y=y))
+}
+
+df <- rnormmix(1000, theta)
+library(ggplot2)
+ggplot(data=df, aes(x=x)) + geom_histogram(aes(y=..density..)) +
+  geom_segment(data=data.frame(x=theta$mu, yend=theta$pi),
+               aes(x=x,xend=x,y=0,yend=yend), color="red")
+```
+
+
+```{r}
+rhosGen <- function(lambda, maxTime){
+  rhos <- NULL
+  i <- 1
+  while(sum(rhos) < maxTime){
+    samp <- rexp(n = 1, rate = lambda)
+    rhos[i] <- samp
+    i <- i+1
+  }
+  return(head(rhos, -1))
+}
+taosGen <- function(lambda, maxTime){
+  rhos <- rhosGen(lambda, maxTime)
+  taos <- NULL
+  cumSum <- 0
+  for(i in 1:length(rhos)){
+    taos[i] <- sum(rhos[1:i])
+  }
+  return(taos)
+}
+ppGen <- function(lambda, maxTime){
+  taos <- taosGen(lambda, maxTime)
+  pp <- NULL
+  ppjump <- NULL
+  data <- NULL
+  jump <- NULL
+  for(i in 1:maxTime){
+    pp[i] <- sum(taos <= i)
+    df <- rnormmix(pp[i], theta)
+    jump[i] <- sum(rnorm(pp[i]-pp[i-1], -1.1, 0.3))
+    data[i] <- sum(jump[0:i])
+  }
+  return(list(data, jump))
+}
+size <- 1000
+cpp <- ppGen(0.5, size)
+cpp.path <- cpp[[1]]
+cpp.jump <- cpp[[2]]
+x <- seq(0, size-1, by=1)
+
+#par(mfrow=c(2,1))
+plot(x,cpp.path, type="s")
+plot(x,cpp.jump, type="s")
+plot(x,sort(cpp.jump), type="s")
+```
+
+Draw the histogram of the jump. 
+
+```{r}
+hist(cpp.jump, breaks=20)
+```
+
+### Now lets fit a Gaussian finite mixture model with the Mclust package.
+
+```{r}
+cpp.jump.gmm = Mclust(cpp.jump, G=2)
+summary(cpp.jump.gmm)
+cpp.jump.gmm$parameters
+```
+
+### Multimode Package
+
+We try to localize the mod
+```{r}
+# Kernel density estimation with two modes
+locmodes(cpp.jump,mod0=2,display=TRUE,xlab="loc of the mode")
+```
+
+#### Ameijeiras-Alonso ACR
+
+```{r}
+#modetest(cpp.jump,mod0=1,method="ACR",B=5,n=NULL,tol=NULL)
+```
+
+#### Silverman
+
+```{r}
+modetest(cpp.jump,mod0=2,method="SI",B=5,submethod=NULL,n=NULL,tol=NULL)
+modetest(cpp.jump,mod0=2,method="SI",B=5,submethod=1,n=NULL,tol=NULL)
+```
+
+
+#### The Dip Test (HH)
+
+```{r}
+#modetest(cpp.jump,mod0=1,method="HH",B=5,n=NULL,tol=NULL)
+```
+
+#### The Excess Mass test (FM)
+
+```{r}
+modetest(cpp.jump,mod0=2,method="FM",B=5,n=NULL,tol=NULL)
+```
+
+
+
+
+```{r}
+rhosGen <- function(lambda, maxTime){
+  rhos <- NULL
+  i <- 1
+  while(sum(rhos) < maxTime){
+    samp <- rexp(n = 1, rate = lambda)
+    rhos[i] <- samp
+    i <- i+1
+  }
+  return(head(rhos, -1))
+}
+taosGen <- function(lambda, maxTime){
+  rhos <- rhosGen(lambda, maxTime)
+  taos <- NULL
+  cumSum <- 0
+  for(i in 1:length(rhos)){
+    taos[i] <- sum(rhos[1:i])
+  }
+  return(taos)
+}
+ppGen <- function(lambda, maxTime){
+  taos <- taosGen(lambda, maxTime)
+  pp <- NULL
+  ppjump <- NULL
+  data <- NULL
+  jump <- NULL
+  for(i in 1:maxTime){
+    pp[i] <- sum(taos <= i)
+    df <- rnormmix(pp[i], theta)
+    jump[i] <- sum(rnorm(pp[i]-pp[i-1], -1.1, 0.3))
+    data[i] <- sum(jump[0:i])
+  }
+  return(list(data, jump))
+}
+size <- 1000
+cpp <- ppGen(0.5, size)
+cpp.path <- cpp[[1]]
+cpp.jump <- cpp[[2]]
+x <- seq(0, size-1, by=1)
+
+#par(mfrow=c(2,1))
+plot(x,cpp.path, type="s")
+plot(x,cpp.jump, type="s")
+plot(x,sort(cpp.jump), type="s")
+```
