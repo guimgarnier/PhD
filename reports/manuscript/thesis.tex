@@ -1,0 +1,107 @@
+\documentclass[mainlanguage=french,fncychap=none, secnumdepth=paragraph]{yathesis}
+
+\DeclareUnicodeCharacter{0301}{\'{e}} 
+% Chargement manuel de packages (pas déjà chargés par la classe yathesis)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum} % À proscrire dans un vrai mémoire de thèse !
+\usepackage{hyperref}
+
+\input{macros/preambule}
+
+% yathesis configuration (choisissez votre labo !)
+\input{config/yathesis_ljll}
+%\input{config/yathesis_lpsm}
+%\input{config/yathesis_imj-prg}
+%\input{config/yathesis_ceremade}
+
+% macros
+\input{macros/macros}
+\input{macros/color}
+% la bibliographie
+\usepackage[backend=biber, maxbibnames=6, maxcitenames=6,
+mincitenames=1, firstinits=true, doi=false,isbn=false,url=false]{biblatex}
+
+\addbibresource{bibliographie.bib}
+
+\begin{document}
+
+% informations sur la these
+\input{config/infos}
+
+% informations dépendantes du labo (choisissez votre labo !)
+\input{config/infos_ljll}
+%\input{config/infos_lpsm}
+%\input{config/infos_imj-prg}
+%\input{config/infos_ceremade}
+
+\maketitle[frametitle=none]
+
+\makekeywords
+
+\makelaboratory
+
+\dedication{À Manue}
+\dedication{À Garance}
+\dedication{À mes parents}
+\dedication{À Grégoire}
+%\makededications
+
+% Épigraphes(s) :
+%\frontepigraph{Il est plus facile de désintégrer un atome qu'un préjugé.}{Albert Einstein}
+% Production de la page de d'épigraphe(s) :
+%\makefrontepigraphs
+
+\input{abstract}
+
+\makeabstract
+
+\tableofcontents
+
+%\include{chapters/remerciements}
+
+\mainmatter
+
+
+\include{chapters/introductionFR}
+
+
+\selectlanguage{english}
+
+\chapter{Introduction}
+    \input{chapters/chapitre1}
+\section{Motivation}
+
+\chapter{Description of the biological question}
+    \input{chapters/biological_description}
+
+\part{The theorical stuff}
+\chapter{Statistical modelling}
+    \section{Statistical approach method 1 - Decompounding noise}
+    \section{Statistical approach method 2 - Multiplicative Decompounding}
+
+\chapter{PDEs modelling}
+
+\part{Data Analysis}
+\chapter{Multimodality}
+    \input{chapters/chapitre_bimodality}
+%\section{The moment problem}
+
+\appendix
+\part{Appendix}
+\chapter{Mathematic Tools}
+\section{Nonparametric estimation}
+\section{Statistical tests}
+\section{Integral transformations}
+
+\backmatter
+
+\printbibliography
+
+\makebackcover
+
+\end{document}
+%%% Local Variables:
+%%% flyspell-mode: 1
+%%% ispell-local-dictionary: "french"
+%%% End:

@@ -1,0 +1,889 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{baer2005comparative}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=02de450bb6487c83b3728c612a315924}{%
+           family={Baer},
+           familyi={B\bibinitperiod},
+           given={Charles\bibnamedelima F},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=4a9c337f108b1ddc9bac0ec65155d1e6}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=19149f6979492c63ee97445adea19f9a}{%
+           family={Steding},
+           familyi={S\bibinitperiod},
+           given={Catherine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=29ded439943ac844327e3ab6f6be05bf}{%
+           family={Baumgartner},
+           familyi={B\bibinitperiod},
+           given={Margaret},
+           giveni={M\bibinitperiod}}}%
+        {{hash=96ec37e4248748f846cff612deee362a}{%
+           family={Hawkins},
+           familyi={H\bibinitperiod},
+           given={Alicia},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ca7a3172d2bbae9d1722ddff2f942a7b}{%
+           family={Houppert},
+           familyi={H\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5962f5fcc36545cec18ff1b9bdb1764d}{%
+           family={Mason},
+           familyi={M\bibinitperiod},
+           given={Nicole},
+           giveni={N\bibinitperiod}}}%
+        {{hash=2b571c1367a2d8d514f2629f0fab3900}{%
+           family={Reed},
+           familyi={R\bibinitperiod},
+           given={Marissa},
+           giveni={M\bibinitperiod}}}%
+        {{hash=61f302daaeb83555c9cfec7051b4927d}{%
+           family={Simonelic},
+           familyi={S\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f9c3aa6ba0bc2f7bc275208548c81b8f}{%
+           family={Woodard},
+           familyi={W\bibinitperiod},
+           given={Wayne},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {National Acad Sciences}%
+      }
+      \strng{namehash}{e7010bdc53e276b8985bebbf6051365d}
+      \strng{fullhash}{a114dfa9be1d935f8fd9638bc427d94b}
+      \strng{bibnamehash}{e7010bdc53e276b8985bebbf6051365d}
+      \strng{authorbibnamehash}{e7010bdc53e276b8985bebbf6051365d}
+      \strng{authornamehash}{e7010bdc53e276b8985bebbf6051365d}
+      \strng{authorfullhash}{a114dfa9be1d935f8fd9638bc427d94b}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{16}
+      \field{title}{Comparative evolutionary genetics of spontaneous mutations affecting fitness in rhabditid nematodes}
+      \field{volume}{102}
+      \field{year}{2005}
+      \field{pages}{5785\bibrangedash 5790}
+      \range{pages}{6}
+    \endentry
+    \entry{bataillon2014effects}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5d1da11a6941f1274c3811eb41f6c417}{%
+           family={Bataillon},
+           familyi={B\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a591beb6e9151ed344f38e5f8bd65ca0}{%
+           family={Bailey},
+           familyi={B\bibinitperiod},
+           given={Susan\bibnamedelima F},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{3d9310b5c3123cc144e83a7139f2ecc1}
+      \strng{fullhash}{3d9310b5c3123cc144e83a7139f2ecc1}
+      \strng{bibnamehash}{3d9310b5c3123cc144e83a7139f2ecc1}
+      \strng{authorbibnamehash}{3d9310b5c3123cc144e83a7139f2ecc1}
+      \strng{authornamehash}{3d9310b5c3123cc144e83a7139f2ecc1}
+      \strng{authorfullhash}{3d9310b5c3123cc144e83a7139f2ecc1}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of the New York Academy of Sciences}
+      \field{number}{1}
+      \field{title}{Effects of new mutations on fitness: insights from models and data}
+      \field{volume}{1320}
+      \field{year}{2014}
+      \field{pages}{76\bibrangedash 92}
+      \range{pages}{17}
+      \keyw{ref}
+    \endentry
+    \entry{darwin1859origin}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d0e4f38206db228a7b870a49f6f52db2}{%
+           family={Darwin},
+           familyi={D\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0e4f38206db228a7b870a49f6f52db2}
+      \strng{fullhash}{d0e4f38206db228a7b870a49f6f52db2}
+      \strng{bibnamehash}{d0e4f38206db228a7b870a49f6f52db2}
+      \strng{authorbibnamehash}{d0e4f38206db228a7b870a49f6f52db2}
+      \strng{authornamehash}{d0e4f38206db228a7b870a49f6f52db2}
+      \strng{authorfullhash}{d0e4f38206db228a7b870a49f6f52db2}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{On the origin of species}
+      \field{year}{1859}
+    \endentry
+    \entry{eyre2007distribution}{article}{}
+      \name{author}{2}{}{%
+        {{hash=85689adaf72aa0eba53475a22d7e4058}{%
+           family={Eyre-Walker},
+           familyi={E\bibinithyphendelim W\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ade3e17fcdb1c99d8fc4246f925f1720}{%
+           family={Keightley},
+           familyi={K\bibinitperiod},
+           given={Peter\bibnamedelima D},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{366325f6e67612f46ed2004b5a336c46}
+      \strng{fullhash}{366325f6e67612f46ed2004b5a336c46}
+      \strng{bibnamehash}{366325f6e67612f46ed2004b5a336c46}
+      \strng{authorbibnamehash}{366325f6e67612f46ed2004b5a336c46}
+      \strng{authornamehash}{366325f6e67612f46ed2004b5a336c46}
+      \strng{authorfullhash}{366325f6e67612f46ed2004b5a336c46}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Reviews Genetics}
+      \field{number}{8}
+      \field{title}{The distribution of fitness effects of new mutations}
+      \field{volume}{8}
+      \field{year}{2007}
+      \field{pages}{610\bibrangedash 618}
+      \range{pages}{9}
+      \keyw{ref}
+    \endentry
+    \entry{halligan2009spontaneous}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6fe46a78c8abd81aff302039f0277442}{%
+           family={Halligan},
+           familyi={H\bibinitperiod},
+           given={Daniel\bibnamedelima L},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=ade3e17fcdb1c99d8fc4246f925f1720}{%
+           family={Keightley},
+           familyi={K\bibinitperiod},
+           given={Peter\bibnamedelima D},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Annual Reviews}%
+      }
+      \strng{namehash}{b7a114b32d1995b94afaedb56f693d73}
+      \strng{fullhash}{b7a114b32d1995b94afaedb56f693d73}
+      \strng{bibnamehash}{b7a114b32d1995b94afaedb56f693d73}
+      \strng{authorbibnamehash}{b7a114b32d1995b94afaedb56f693d73}
+      \strng{authornamehash}{b7a114b32d1995b94afaedb56f693d73}
+      \strng{authorfullhash}{b7a114b32d1995b94afaedb56f693d73}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annual Review of Ecology, Evolution, and Systematics}
+      \field{number}{1}
+      \field{title}{Spontaneous mutation accumulation studies in evolutionary genetics}
+      \field{volume}{40}
+      \field{year}{2009}
+      \field{pages}{151\bibrangedash 172}
+      \range{pages}{22}
+    \endentry
+    \entry{iyer2006dna}{article}{}
+      \name{author}{4}{}{%
+        {{hash=c3547e7f9c00bb8bb73fcac5c5048475}{%
+           family={Iyer},
+           familyi={I\bibinitperiod},
+           given={Ravi\bibnamedelima R},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=c0d62f59eb7442759440696fb1d3f501}{%
+           family={Pluciennik},
+           familyi={P\bibinitperiod},
+           given={Anna},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5bfcbe6ccdd35fa8372423b51012f05b}{%
+           family={Burdett},
+           familyi={B\bibinitperiod},
+           given={Vickers},
+           giveni={V\bibinitperiod}}}%
+        {{hash=dcb75e7b43eee53ed3d95ad85dc9a909}{%
+           family={Modrich},
+           familyi={M\bibinitperiod},
+           given={Paul\bibnamedelima L},
+           giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{2365c6e04deada1abbda6e95c6b3c4a9}
+      \strng{fullhash}{2365c6e04deada1abbda6e95c6b3c4a9}
+      \strng{bibnamehash}{2365c6e04deada1abbda6e95c6b3c4a9}
+      \strng{authorbibnamehash}{2365c6e04deada1abbda6e95c6b3c4a9}
+      \strng{authornamehash}{2365c6e04deada1abbda6e95c6b3c4a9}
+      \strng{authorfullhash}{2365c6e04deada1abbda6e95c6b3c4a9}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Chemical reviews}
+      \field{number}{2}
+      \field{title}{DNA mismatch repair: functions and mechanisms}
+      \field{volume}{106}
+      \field{year}{2006}
+      \field{pages}{302\bibrangedash 323}
+      \range{pages}{22}
+    \endentry
+    \entry{katju2019old}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a1c237919b2e5e7eefdc68ae1a4d4cbc}{%
+           family={Katju},
+           familyi={K\bibinitperiod},
+           given={Vaishali},
+           giveni={V\bibinitperiod}}}%
+        {{hash=0b868da774a26fd62cddaf1b07b7a7cc}{%
+           family={Bergthorsson},
+           familyi={B\bibinitperiod},
+           given={Ulfar},
+           giveni={U\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{45e911b57efddc0a311f4050bc4e50ff}
+      \strng{fullhash}{45e911b57efddc0a311f4050bc4e50ff}
+      \strng{bibnamehash}{45e911b57efddc0a311f4050bc4e50ff}
+      \strng{authorbibnamehash}{45e911b57efddc0a311f4050bc4e50ff}
+      \strng{authornamehash}{45e911b57efddc0a311f4050bc4e50ff}
+      \strng{authorfullhash}{45e911b57efddc0a311f4050bc4e50ff}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genome Biology and Evolution}
+      \field{number}{1}
+      \field{title}{Old trade, new tricks: insights into the spontaneous mutation process from the partnering of classical mutation accumulation experiments with high-throughput genomic approaches}
+      \field{volume}{11}
+      \field{year}{2019}
+      \field{pages}{136\bibrangedash 165}
+      \range{pages}{30}
+    \endentry
+    \entry{lynch2016genetic}{article}{}
+      \name{author}{7}{}{%
+        {{hash=9cc21f36b11b9279d8f08ccb61aa96b0}{%
+           family={Lynch},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2ef251344cb709f51c7e9cea89ce57cb}{%
+           family={Ackerman},
+           familyi={A\bibinitperiod},
+           given={Matthew\bibnamedelima S},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=9ea20d6593d1623941d3bd38b68e77e0}{%
+           family={Gout},
+           familyi={G\bibinitperiod},
+           given={Jean-Francois},
+           giveni={J\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=a790cb31e49ac5ac0bd899da425b14a0}{%
+           family={Long},
+           familyi={L\bibinitperiod},
+           given={Hongan},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f5821dd104ada184ac28047dce803b14}{%
+           family={Sung},
+           familyi={S\bibinitperiod},
+           given={Way},
+           giveni={W\bibinitperiod}}}%
+        {{hash=cb8f2279b61e6454425d7baeb18e7623}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={W\bibnamedelima Kelley},
+           giveni={W\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=9911538356b136463b28ddb91208c6a9}{%
+           family={Foster},
+           familyi={F\bibinitperiod},
+           given={Patricia\bibnamedelima L},
+           giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group UK London}%
+      }
+      \strng{namehash}{9752fbcf3d77b819af3b89b79da617c4}
+      \strng{fullhash}{5065c79162fb7570f29741404e1ab843}
+      \strng{bibnamehash}{9752fbcf3d77b819af3b89b79da617c4}
+      \strng{authorbibnamehash}{9752fbcf3d77b819af3b89b79da617c4}
+      \strng{authornamehash}{9752fbcf3d77b819af3b89b79da617c4}
+      \strng{authorfullhash}{5065c79162fb7570f29741404e1ab843}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Reviews Genetics}
+      \field{number}{11}
+      \field{title}{Genetic drift, selection and the evolution of the mutation rate}
+      \field{volume}{17}
+      \field{year}{2016}
+      \field{pages}{704\bibrangedash 714}
+      \range{pages}{11}
+    \endentry
+    \entry{mahilkar2022selection}{article}{}
+      \name{author}{4}{}{%
+        {{hash=326b93829283e5aa4f47e6252c691d32}{%
+           family={Mahilkar},
+           familyi={M\bibinitperiod},
+           given={Anjali},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d55b90995d4bff6e9ead821121cf4672}{%
+           family={Raj},
+           familyi={R\bibinitperiod},
+           given={Namratha},
+           giveni={N\bibinitperiod}}}%
+        {{hash=3abe304a906c3d11f9c117364a5671c1}{%
+           family={Kemkar},
+           familyi={K\bibinitperiod},
+           given={Sharvari},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0727504c0d09fffe1035a677320e258f}{%
+           family={Saini},
+           familyi={S\bibinitperiod},
+           given={Supreet},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group UK London}%
+      }
+      \strng{namehash}{04b371362cd494d25b839d6df435804b}
+      \strng{fullhash}{04b371362cd494d25b839d6df435804b}
+      \strng{bibnamehash}{04b371362cd494d25b839d6df435804b}
+      \strng{authorbibnamehash}{04b371362cd494d25b839d6df435804b}
+      \strng{authornamehash}{04b371362cd494d25b839d6df435804b}
+      \strng{authorfullhash}{04b371362cd494d25b839d6df435804b}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific Reports}
+      \field{number}{1}
+      \field{title}{Selection in a growing colony biases results of mutation accumulation experiments}
+      \field{volume}{12}
+      \field{year}{2022}
+      \field{pages}{15470}
+      \range{pages}{1}
+    \endentry
+    \entry{mukai1964genetic}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0bb0d8c4f9ceb42dc4ee44caf0e7348e}{%
+           family={Mukai},
+           familyi={M\bibinitperiod},
+           given={Terumi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{0bb0d8c4f9ceb42dc4ee44caf0e7348e}
+      \strng{fullhash}{0bb0d8c4f9ceb42dc4ee44caf0e7348e}
+      \strng{bibnamehash}{0bb0d8c4f9ceb42dc4ee44caf0e7348e}
+      \strng{authorbibnamehash}{0bb0d8c4f9ceb42dc4ee44caf0e7348e}
+      \strng{authornamehash}{0bb0d8c4f9ceb42dc4ee44caf0e7348e}
+      \strng{authorfullhash}{0bb0d8c4f9ceb42dc4ee44caf0e7348e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genetics}
+      \field{number}{1}
+      \field{title}{The genetic structure of natural populations of Drosophila melanogaster. I. Spontaneous mutation rate of polygenes controlling viability}
+      \field{volume}{50}
+      \field{year}{1964}
+      \field{pages}{1}
+      \range{pages}{1}
+    \endentry
+    \entry{muller1991excess}{article}{}
+      \name{author}{2}{}{%
+        {{hash=abda6ed48cd9abe7727c37e95480e578}{%
+           family={M{ü}ller},
+           familyi={M\bibinitperiod},
+           given={Dietrich\bibnamedelima W},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=bb42642220eb7f7fdb51b4182f1c9557}{%
+           family={Sawitzki},
+           familyi={S\bibinitperiod},
+           given={G{ü}nther},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{83caf6aeedc4c96acc68fdf69179cb15}
+      \strng{fullhash}{83caf6aeedc4c96acc68fdf69179cb15}
+      \strng{bibnamehash}{83caf6aeedc4c96acc68fdf69179cb15}
+      \strng{authorbibnamehash}{83caf6aeedc4c96acc68fdf69179cb15}
+      \strng{authornamehash}{83caf6aeedc4c96acc68fdf69179cb15}
+      \strng{authorfullhash}{83caf6aeedc4c96acc68fdf69179cb15}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{415}
+      \field{title}{Excess mass estimates and tests for multimodality}
+      \field{volume}{86}
+      \field{year}{1991}
+      \field{pages}{738\bibrangedash 746}
+      \range{pages}{9}
+    \endentry
+    \entry{ossowski2010rate}{article}{}
+      \name{author}{8}{}{%
+        {{hash=0beed5e9aa33a7f6641dafecec2396d9}{%
+           family={Ossowski},
+           familyi={O\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=25d41363d749c9fe9ddb7aaa6226aca4}{%
+           family={Schneeberger},
+           familyi={S\bibinitperiod},
+           given={Korbinian},
+           giveni={K\bibinitperiod}}}%
+        {{hash=bb3ed827093929d792e1d1b8b61159ec}{%
+           family={Lucas-Lled{ó}},
+           familyi={L\bibinithyphendelim L\bibinitperiod},
+           given={Jos{é}\bibnamedelima Ignacio},
+           giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=169ea9f19fe7f91d4201f01db140e24d}{%
+           family={Warthmann},
+           familyi={W\bibinitperiod},
+           given={Norman},
+           giveni={N\bibinitperiod}}}%
+        {{hash=8a19a8c02e31c82d3ff7cbd53f992db9}{%
+           family={Clark},
+           familyi={C\bibinitperiod},
+           given={Richard\bibnamedelima M},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2bb2bed432ed839d3d3b1871301de7bb}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={Ruth\bibnamedelima G},
+           giveni={R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=fa761ae277d59727373fcb407a79f038}{%
+           family={Weigel},
+           familyi={W\bibinitperiod},
+           given={Detlef},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9cc21f36b11b9279d8f08ccb61aa96b0}{%
+           family={Lynch},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association for the Advancement of Science}%
+      }
+      \strng{namehash}{a00e2d60d83c41e2d0f953888ffec845}
+      \strng{fullhash}{27ecd800eeda711e3c31098024a82c10}
+      \strng{bibnamehash}{a00e2d60d83c41e2d0f953888ffec845}
+      \strng{authorbibnamehash}{a00e2d60d83c41e2d0f953888ffec845}
+      \strng{authornamehash}{a00e2d60d83c41e2d0f953888ffec845}
+      \strng{authorfullhash}{27ecd800eeda711e3c31098024a82c10}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{science}
+      \field{number}{5961}
+      \field{title}{The rate and molecular spectrum of spontaneous mutations in Arabidopsis thaliana}
+      \field{volume}{327}
+      \field{year}{2010}
+      \field{pages}{92\bibrangedash 94}
+      \range{pages}{3}
+    \endentry
+    \entry{parzen1962estimation}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3538e72c10a2ef29e8444e94614376a0}{%
+           family={Parzen},
+           familyi={P\bibinitperiod},
+           given={Emanuel},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{fullhash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{bibnamehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{authorbibnamehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{authornamehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{authorfullhash}{3538e72c10a2ef29e8444e94614376a0}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The annals of mathematical statistics}
+      \field{number}{3}
+      \field{title}{On estimation of a probability density function and mode}
+      \field{volume}{33}
+      \field{year}{1962}
+      \field{pages}{1065\bibrangedash 1076}
+      \range{pages}{12}
+    \endentry
+    \entry{robert2019real}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9c4ffa1ea82d2a1e3a77dc4a1a651873}{%
+           family={Robert},
+           familyi={R\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5566ade267f5eb8e8ca4c1dde99b615e}{%
+           family={Ollion},
+           familyi={O\bibinitperiod},
+           given={Jean},
+           giveni={J\bibinitperiod}}}%
+        {{hash=7743ca7f4068c81e0c54f5f4c69f994e}{%
+           family={Elez},
+           familyi={E\bibinitperiod},
+           given={Marina},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group UK London}%
+      }
+      \strng{namehash}{9a3c19b34e55a9faddb8db9e85ffce7e}
+      \strng{fullhash}{9a3c19b34e55a9faddb8db9e85ffce7e}
+      \strng{bibnamehash}{9a3c19b34e55a9faddb8db9e85ffce7e}
+      \strng{authorbibnamehash}{9a3c19b34e55a9faddb8db9e85ffce7e}
+      \strng{authornamehash}{9a3c19b34e55a9faddb8db9e85ffce7e}
+      \strng{authorfullhash}{9a3c19b34e55a9faddb8db9e85ffce7e}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature protocols}
+      \field{number}{11}
+      \field{title}{Real-time visualization of mutations and their fitness effects in single bacteria}
+      \field{volume}{14}
+      \field{year}{2019}
+      \field{pages}{3126\bibrangedash 3143}
+      \range{pages}{18}
+    \endentry
+    \entry{robert2018mutation}{article}{}
+      \name{author}{6}{}{%
+        {{hash=9c4ffa1ea82d2a1e3a77dc4a1a651873}{%
+           family={Robert},
+           familyi={R\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5566ade267f5eb8e8ca4c1dde99b615e}{%
+           family={Ollion},
+           familyi={O\bibinitperiod},
+           given={Jean},
+           giveni={J\bibinitperiod}}}%
+        {{hash=16ec8420acd96843cfc8132af58c2cbb}{%
+           family={Robert},
+           familyi={R\bibinitperiod},
+           given={J{é}r{ô}me},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ba81f6b1191663736aef180fe19f6bf6}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Xiaohu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=06caf71ff3a238f26f991fc343aed880}{%
+           family={Matic},
+           familyi={M\bibinitperiod},
+           given={Ivan},
+           giveni={I\bibinitperiod}}}%
+        {{hash=7743ca7f4068c81e0c54f5f4c69f994e}{%
+           family={Elez},
+           familyi={E\bibinitperiod},
+           given={Marina},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association for the Advancement of Science}%
+      }
+      \strng{namehash}{c1c1fa2b8114703413dd0c4f6b77e428}
+      \strng{fullhash}{c1c1fa2b8114703413dd0c4f6b77e428}
+      \strng{bibnamehash}{c1c1fa2b8114703413dd0c4f6b77e428}
+      \strng{authorbibnamehash}{c1c1fa2b8114703413dd0c4f6b77e428}
+      \strng{authornamehash}{c1c1fa2b8114703413dd0c4f6b77e428}
+      \strng{authorfullhash}{c1c1fa2b8114703413dd0c4f6b77e428}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science}
+      \field{number}{6381}
+      \field{title}{Mutation dynamics and fitness effects followed in single cells}
+      \field{volume}{359}
+      \field{year}{2018}
+      \field{pages}{1283\bibrangedash 1286}
+      \range{pages}{4}
+    \endentry
+    \entry{rosenblatt1956remarks}{article}{}
+      \name{author}{1}{}{%
+        {{hash=02b2439d480906c2f443b35ff6ba2406}{%
+           family={Rosenblatt},
+           familyi={R\bibinitperiod},
+           given={Murray},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{fullhash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{bibnamehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{authorbibnamehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{authornamehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{authorfullhash}{02b2439d480906c2f443b35ff6ba2406}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{number}{3}
+      \field{title}{Remarks on Some Nonparametric Estimates of a Density Function}
+      \field{volume}{27}
+      \field{year}{1956}
+      \field{pages}{832\bibrangedash 837}
+      \range{pages}{6}
+    \endentry
+    \entry{rutter2012fitness}{article}{}
+      \name{author}{9}{}{%
+        {{hash=5f87e77444781aae3cfdbac5d492c04c}{%
+           family={Rutter},
+           familyi={R\bibinitperiod},
+           given={Matthew\bibnamedelima T},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=ac864bf52d397acc2d230ed64330c833}{%
+           family={Roles},
+           familyi={R\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod}}}%
+        {{hash=df98dba95c71f32c282a9f858d14c081}{%
+           family={Conner},
+           familyi={C\bibinitperiod},
+           given={Jeffrey\bibnamedelima K},
+           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=2bb2bed432ed839d3d3b1871301de7bb}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={Ruth\bibnamedelima G},
+           giveni={R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=602c3b619d91036e658b738dcb3b0e32}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={Frank\bibnamedelima H},
+           giveni={F\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=25d41363d749c9fe9ddb7aaa6226aca4}{%
+           family={Schneeberger},
+           familyi={S\bibinitperiod},
+           given={Korbinian},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0beed5e9aa33a7f6641dafecec2396d9}{%
+           family={Ossowski},
+           familyi={O\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fa761ae277d59727373fcb407a79f038}{%
+           family={Weigel},
+           familyi={W\bibinitperiod},
+           given={Detlef},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4411c74aa69800ac3b1192503e43ab32}{%
+           family={Fenster},
+           familyi={F\bibinitperiod},
+           given={Charles\bibnamedelima B},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Publishing Inc Malden, USA}%
+      }
+      \strng{namehash}{86668b336fcc9ab53c7a83a0235533cc}
+      \strng{fullhash}{7d91dcf107a77480a656c33e6244d868}
+      \strng{bibnamehash}{86668b336fcc9ab53c7a83a0235533cc}
+      \strng{authorbibnamehash}{86668b336fcc9ab53c7a83a0235533cc}
+      \strng{authornamehash}{86668b336fcc9ab53c7a83a0235533cc}
+      \strng{authorfullhash}{7d91dcf107a77480a656c33e6244d868}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Evolution}
+      \field{number}{7}
+      \field{title}{Fitness of Arabidopsis thaliana mutation accumulation lines whose spontaneous mutations are known}
+      \field{volume}{66}
+      \field{year}{2012}
+      \field{pages}{2335\bibrangedash 2339}
+      \range{pages}{5}
+    \endentry
+    \entry{silverman1983some}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a4382e6b2a00123dfd0676e54180141c}{%
+           family={Silverman},
+           familyi={S\bibinitperiod},
+           given={Bernard\bibnamedelima W},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press Cambridge}%
+      }
+      \strng{namehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{fullhash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{bibnamehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{authorbibnamehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{authornamehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{authorfullhash}{a4382e6b2a00123dfd0676e54180141c}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Probability, statistics and analysis}
+      \field{title}{Some properties of a test for multimodality based on kernel density estimates}
+      \field{volume}{79}
+      \field{year}{1983}
+      \field{pages}{248\bibrangedash 259}
+      \range{pages}{12}
+    \endentry
+    \entry{silverman1981using}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a4382e6b2a00123dfd0676e54180141c}{%
+           family={Silverman},
+           familyi={S\bibinitperiod},
+           given={Bernard\bibnamedelima W},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{fullhash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{bibnamehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{authorbibnamehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{authornamehash}{a4382e6b2a00123dfd0676e54180141c}
+      \strng{authorfullhash}{a4382e6b2a00123dfd0676e54180141c}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Methodological)}
+      \field{number}{1}
+      \field{title}{Using kernel density estimates to investigate multimodality}
+      \field{volume}{43}
+      \field{year}{1981}
+      \field{pages}{97\bibrangedash 99}
+      \range{pages}{3}
+    \endentry
+    \entry{tenaillon2016tempo}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=5191996f6f48e6a3bc6900554aee7bb5}{%
+           family={Tenaillon},
+           familyi={T\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=bd617c1d57bad68fe2d2e96a0a096c8f}{%
+           family={Barrick},
+           familyi={B\bibinitperiod},
+           given={Jeffrey\bibnamedelima E},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=039a523064a87d1da6e2ee8693e075f9}{%
+           family={Ribeck},
+           familyi={R\bibinitperiod},
+           given={Noah},
+           giveni={N\bibinitperiod}}}%
+        {{hash=23f036a92c134e8e7acda5e6f1b7b283}{%
+           family={Deatherage},
+           familyi={D\bibinitperiod},
+           given={Daniel\bibnamedelima E},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=b503db04cf6f172ddc7a49f73a5842b7}{%
+           family={Blanchard},
+           familyi={B\bibinitperiod},
+           given={Jeffrey\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=989a997809eb82bab2c005aa5922fd23}{%
+           family={Dasgupta},
+           familyi={D\bibinitperiod},
+           given={Aurko},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a22f6aec7a4474c3fcd7df0d2f9c6beb}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Gabriel\bibnamedelima C},
+           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=d98c5fd19c8ec109db501fb84784a591}{%
+           family={Wielgoss},
+           familyi={W\bibinitperiod},
+           given={S{é}bastien},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c9a42d20ce8220992b97933e5455eab5}{%
+           family={Cruveiller},
+           familyi={C\bibinitperiod},
+           given={St{é}phane},
+           giveni={S\bibinitperiod}}}%
+        {{hash=410b858662034c8b510a6f9a39791ebf}{%
+           family={M{é}digue},
+           familyi={M\bibinitperiod},
+           given={Claudine},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group UK London}%
+      }
+      \strng{namehash}{3f3832c2ccd50c30478fc310af1821f0}
+      \strng{fullhash}{01a5e526e18be5bb3c45e26463b4e8b9}
+      \strng{bibnamehash}{3f3832c2ccd50c30478fc310af1821f0}
+      \strng{authorbibnamehash}{3f3832c2ccd50c30478fc310af1821f0}
+      \strng{authornamehash}{3f3832c2ccd50c30478fc310af1821f0}
+      \strng{authorfullhash}{01a5e526e18be5bb3c45e26463b4e8b9}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{number}{7615}
+      \field{title}{Tempo and mode of genome evolution in a 50,000-generation experiment}
+      \field{volume}{536}
+      \field{year}{2016}
+      \field{pages}{165\bibrangedash 170}
+      \range{pages}{6}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
