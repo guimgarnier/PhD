@@ -1,0 +1,1553 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+
+
+\RequirePackage[numbers]{natbib}
+\usepackage[dvips]{epsfig}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{cancel}
+\usepackage{ulem}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
+
+%\usepackage[notref, notcite]{showkeys}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd,amsbsy,dsfont,hyperref}
+
+\usepackage[margin=3cm]{geometry}
+\setlength{\oddsidemargin}{.5cm} 
+\setlength{\evensidemargin}{.5cm}
+\setlength{\textwidth}{15cm} 
+\setlength{\textheight}{20cm}
+\setlength{\topmargin}{1cm}
+
+\usepackage{aquabox}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{centernot}
+
+\makeatletter
+\def\l@section{\@tocline{1}{12pt plus2pt}{0pt}{}{\bfseries}}% <- added
+
+\def\@tocline#1#2#3#4#5#6#7{\relax
+    \ifnum #1>-1% <- added
+  \ifnum #1>\c@tocdepth % then omit
+  \else
+    \par \addpenalty\@secpenalty%
+    \begingroup \hyphenpenalty\@M
+    \@ifempty{#4}{%
+      \@tempdima\csname r@tocindent\number#1\endcsname\relax
+    }{%
+      \@tempdima#4\relax
+    }%
+    \parindent\z@ \leftskip#3\relax \advance\leftskip\@tempdima\relax
+    \rightskip\@pnumwidth plus4em \parfillskip-\@pnumwidth
+    #5\leavevmode\hskip-\@tempdima #6\nobreak\relax
+    \hfil\hbox to\@pnumwidth{\@tocpagenum{#7}}\par
+    \nobreak
+    \endgroup
+  \fi
+\fi}
+\makeatother
+\setcounter{tocdepth}{2}  
+
+
+
+\usepackage{enumitem}
+\newcommand{\subscript}[2]{$#1 _ #2$}
+\newcommand{\delete}[1]{}
+
+\newcommand{\E}{\espe}
+\newcommand{\R}{\RR}
+\renewcommand{\Re}{\mathfrak{R}e}
+
+\newcommand{\norm}[1]{\lVert#1\rVert_2}
+
+\newcommand{\rj}{\ln^2(J)}
+\newcommand{\redline}{\noindent\textcolor{red}{\rule{16cm}{1mm}}}
+\newcommand{\ul}[1]{\underline{#1}}
+
+\newcommand{\change}[1]{\textcolor{red}{#1}}
+
+\newcommand{\mmax}{m_{\max}}
+\newcommand{\tdiff}{(t_2 - t_1)}
+\newcommand{\mopt}{m_J^\star}
+
+\newcommand{\diff}{\,\mathrm{d}}
+
+\newenvironment{details}
+  {\cor{violet}}%
+  {}
+\newenvironment{review}%
+  {\color{red}}%
+  {}
+ \newenvironment{review1}%
+  {\color{blue}}%
+  {}
+
+\newcommand{\supp}{\mathrm{supp}\,}
+\newcommand{\spec}{\mathrm{spec}\,}
+\newcommand{\tendsto}[1]{\xrightarrow[#1]{}}
+
+\title{A mutation equation}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+% \section{The Mutation Equation : all mutation are deleterious}
+
+% \subsection{Description of the model}
+
+% Consider the \textit{mutation equation}
+% \begin{equation}\left\{
+%     \begin{array}{ll}
+% 	\frac{\partial}{\partial t}u(t,x) + \lambda u(t,x) = \lambda \int_{0}^{\infty} k(y, x) u(t,y) \dy
+% 	\eqsepv
+% 	& t \in (0, \infty), x \in \RR_+, \lambda \in (0, \infty) \eqfinv
+% 	\\
+% 	u(0, x) = u_0(x)
+% 	& x \in \RR_+
+% 	\eqfinp
+%     \end{array}
+% 	\right.
+% 	\label{eq:pseudo}
+% \end{equation}
+
+% In all that follows, we will assume that $k$ is self-similar, \ie 
+%     \begin{equation*}
+%         k(y, x) = \frac{1}{y} k_0 \Big(\frac{x}{y} \Big)
+%         \eqsepv
+%         y > 0
+%         \eqsepv 
+%         x \in \RR_+
+%         \eqfinp
+%     \end{equation*}
+%     \begin{equation*}
+%         \supp k_0 \subset [0, 1] 
+%         \eqsepv
+%         \boxed{\int_0^1 k_0(z) \dz = 1}
+%         \eqfinp
+%     \end{equation*}
+
+% In addition, we assume that 
+%     \begin{equation}
+%         \boxed{\int_0^1 k_0(z) (1 + z) \dz < \infty}
+%         \eqfinp
+%         \label{H:douesco4}
+%     \end{equation}
+% \onlyME{En cas de besoin, on supposera l'existence de moments pour tout $n \in \NN$.}
+    
+% \begin{remark}
+%     This last assumption ensures that the Mellin transform $K(s) := \Mcal_{k_0}(s) = \int_0^\infty k_0(z)z^{s-1}\dz$ is well defined for all $\Re(s) \in (1, 2)$.
+% \end{remark}
+    
+% Under theses assumptions, Equation\eqref{eq:pseudo} becomes
+%     \begin{equation}
+%     	\frac{\partial}{\partial t}u(t,x) + \lambda u(t,x) = \lambda \int_{x}^{\infty} \frac{1}{y} k_0 \Big(\frac{x}{y} \Big) u(t,y) \dy
+% 	    \eqfinp 
+% 	    \label{eq:similar_pseudo_growth_equation}
+%     \end{equation}
+
+% \subsubsection{Explicit solution to the mutation Equation \eqref{eq:similar_pseudo_growth_equation}}
+
+% We assume that     \begin{equation}
+%         u_0 \geq 0 \mtext{and} \int_0^\infty u_0(x) (1+x) \dx < \infty
+%         \eqfinp
+%         \label{H:u0_L1}
+%     \end{equation}
+    
+% Define 
+%     \begin{equation}
+%         I(u_0) := \left\{ p \in \RR \eqsepv \int_0^\infty u_0(x) x^{p-1} \dx < \infty \right\}
+%         \eqfinp
+%     \end{equation}
+% By Assumption~\eqref{H:u0_L1}, $[1, 2] \subset I(u_0)$. Moreover $I(u_0)$ is a interval of $\RR$.\\
+% It leads us to define
+%     \begin{subequations}
+%     \begin{align*}
+%         p_0 &= \inf \{p : p \in I(u_0) \} \in [-\infty, 1] \eqfinv\\
+%         q_0 &= \sup \{q : q \in I(u_0) \} \in [2, \infty] \eqfinp
+%     \end{align*}    
+%     \end{subequations}
+
+% For the simplicity, we assume that 
+%     $ p_0=-\infty$ and $q_0 = \infty$
+    
+% We also assume that 
+%     \begin{equation}
+%         \forall \nu \in (p_0, q_0) 
+%         \eqsepv
+%         \int_0^\infty |u_0'(x)| x^\nu \dx < \infty
+%         \eqsepv
+%         \lim_{x \to 0} x^\nu u_0(x) = 0
+%         \eqsepv
+%         \lim_{x \to \infty} x^\nu u_0(x) = 0
+%         \label{H:DoumicEsco22}
+%     \end{equation}
+%     \begin{equation}
+%         \forall \nu \in (p_0, q_0) 
+%         \eqsepv
+%         \int_0^\infty |u_0''(x)| x^\nu \dx < \infty
+%         \eqsepv
+%         \lim_{x \to 0} x^{\nu + 1} u_0'(x) = 0
+%         \eqsepv
+%         \lim_{x \to \infty} x^{\nu + 1} u_0'(x) = 0
+%         \label{H:DoumicEsco23}
+%     \end{equation}
+    
+% In the following, we consider the Mellin transforms
+%     \begin{equation*}
+%         U(t,s) := \Mcal_{u(t, \cdot)}(s)
+%         \mtext{and}
+%         K(t,s) := \Mcal_{k_0(t, \cdot)}(s)
+%     \end{equation*}
+% when these integrals are well-defined.
+
+% \begin{theorem} Let 
+% $u(t, x) \in \Ccal([0, \infty); L^1((1+x)\dx)) \cap \Ccal^1([0, \infty); L^1((1+x)\dx))$ be a solution of Equation\eqref{eq:similar_pseudo_growth_equation}. Then 
+% 	\begin{equation*}
+% 		\frac{\partial}{\partial t} U(t,s) + \lambda U(t,s) = \lambda K(s) U(t,s)
+% 		\eqfinp
+% 	\end{equation*}
+% \end{theorem}
+% \begin{proof}
+% Let multiply Equation\eqref{eq:similar_pseudo_growth_equation} by $x^{s-1}$ and integrate over $(0, \infty)$, we obtain
+% 	    \begin{align*}
+%     	   \frac{d}{dt} \int_0^\infty u(t,x) x^{s-1} \dx
+%     	   + 
+%     	   \lambda \int_0^\infty u(t,x)x^{s-1} \dx
+%     	   &= 
+%     	   \lambda \int_0^\infty x^{s-1} \int_{x}^{\infty} \frac{1}{y} k_0 \Big(\frac{x}{y} \Big) u(t,y) \dy \dx \\
+% 	       &= 
+% 	       \lambda \int_0^\infty  u(t,y) \int_{0}^{y} \frac{1}{y} k_0 \Big(\frac{x}{y} \Big) x^{s-1} \dx \dy 	   \\
+% 	       &= 
+% 	       \lambda \int_0^\infty  u(t,y) y^{s-1}  \int_{0}^{1} k_0(z) z^{s-1} \dz \dy	   \\
+% 	       &= \lambda \int_0^\infty  u(t,y) y^{s-1} \dy  \int_{0}^{1} k_0(z) z^{s-1} \dz
+% 	       \eqfinp
+% 	    \end{align*}
+% Then 
+% 	\begin{equation*}
+% 		\frac{\partial}{\partial t} U(t,s) + \lambda U(t,s) = \lambda K(s) U(t,s)
+% 		\eqfinp
+% 	\end{equation*}
+	
+% Then 
+%     \begin{equation*}
+%         U(t,s) = U_0(s) e^{\lambda(K(s) - 1) t}
+%         \eqsepv
+%         U_0(s) = \Mcal_{u_0}(s)
+%         \eqfinp
+%     \end{equation*}
+% \end{proof}
+
+% By using the inverse Mellin transform, we have at least formally the explicit solution
+
+% \begin{equation}
+%     u(t,x) = \frac{1}{2i\pi} \int_{c - i \infty}^{c + i \infty} U_0(s) e^{\lambda(K(s) - 1) t} x^{-s}\ds 
+%     \eqsepv x \in (0, \infty) \as
+%     \label{eq:explicit_reconstruction}
+% \end{equation}
+
+% \begin{theorem}(Existence of an explicit solution) Assume \eqref{H:u0_L1}, \eqref{H:DoumicEsco22} and \eqref{H:DoumicEsco23}.
+% Then, there exists a unique function $u \in \Ccal([0, \infty); L^1((1+x)dx)) \cap \Ccal^1((0, \infty); L^1((1+x)dx))$ that satisfies Equation~\eqref{eq:similar_pseudo_growth_equation} for all $t > 0$ and almost every $x > 0$. This solution is given by \eqref{eq:explicit_reconstruction} for all $\nu \in (p_0, q_0)$.
+% \end{theorem}
+% \begin{proof}
+% The result is a consequence of the Mellin inversion formula.
+% In order to apply it, we have to prove that for any $\nu \in (1, 2)$, 
+%     \begin{equation*}
+%         \int\limits_{\nu - i \infty}^{\nu + i \infty} \bigg| U_0(s) e^{\lambda(K(s) - 1) t} x^{-s} \bigg| \ds < \infty
+%         \eqfinp
+%     \end{equation*}
+% We know that for all $s \in [1, 2]$, 
+%     \begin{align*}
+%         K(s) = \int_{0}^{\infty} k_0(z) z^{s-1} \dz
+%         &= \int_{0}^{1} k_0(z) z^{s-1} \dz \\
+%         &\leq \int_{0}^{1} k_0(z) \dz
+%         \\
+%         &= K(1)  \\
+%         &= 1
+%         \eqfinp
+%     \end{align*}
+    
+% Then 
+%     \begin{equation*}
+%          \bigg| U_0(s) e^{\lambda(K(s) - 1) t} x^{-s} \bigg|  <   \bigg| U_0(s)  x^{-\nu} \bigg|
+%     \end{equation*}
+
+% It only remains to prove that 
+%     \begin{equation}
+%             \int\limits_{\nu - i \infty}^{\nu + i \infty} \big| U_0(s)\big| \ds 
+%             = 
+%             \int\limits_{-\infty}^{\infty} \big| U_0(\nu + is)\big| \ds
+%             < \infty
+%             \label{eq:DouEsc43}
+%     \end{equation}
+
+% This quantity has already been studied under the same assumptions by Doumic and Escobedo \cite{doumic2016time}. Integration by parts lead to 
+%     \begin{align*}
+%         U_0(\nu + i v) 
+%         &= \int_0^\infty u_0(x) x^{\nu-1}x^{i v}\dx \\
+%         &= \frac{1}{iv + 1} \big[ u_0(x) x^{\nu} x^{i v} \big]_0^\infty - \frac{1}{iv + 1} \int_0^\infty (u_0(x) x^{\nu-1})' x^{i v+1}\dx \\
+%         \eqfinp
+%     \end{align*}
+% Assumption \eqref{H:DoumicEsco22} guarantees that $[ u_0(x) x^{\nu} x^{i v} ]_0^\infty = 0$. Therefore
+%     \begin{align*}
+%         U_0(\nu + i v) 
+%         &= - \frac{1}{iv + 1} \int_0^\infty (u_0(x) x^{\nu-1})' x^{i v+1}\dx \\
+%         &= - \frac{\nu - 1}{iv + 1} \int_0^\infty u_0(x) x^{\nu-2} x^{i v + 1}\dx  - \frac{1}{iv + 1} \int_0^\infty u_0'(x) x^{\nu-1} x^{i v + 1}\dx \\
+%         &= - \frac{\nu - 1}{iv + 1} \int_0^\infty u_0(x) x^{\nu-1} x^{i v}\dx  - \frac{1}{iv + 1} \int_0^\infty u_0'(x) x^{\nu} x^{i v}\dx \\
+%         &= - \frac{\nu - 1}{iv + 1} U_0(\nu + i v)   - \frac{1}{iv + 1} \int_0^\infty u_0'(x) x^{\nu} x^{i v}\dx
+%         \eqfinp
+%     \end{align*}
+% It follows that 
+%     \begin{align*}
+%         U_0(\nu + i v)
+%         &= - \frac{1}{(iv + \nu)}\int_0^\infty u_0'(x) x^{\nu} x^{i v}\dx
+%         \eqfinp
+%     \end{align*}
+% \onlyME{It follow that 
+%     \begin{equation*}
+%         |U_0(\nu + i v)| \leq \frac{1}{\sqrt{\nu^2 + v^2}} \int_0^\infty |u_0'(x)| x^{\nu} \dx
+%         \eqfinp
+%     \end{equation*}}
+% The same calculations and Assumption\eqref{H:DoumicEsco23} allow us to obtain 
+%     \begin{align*}
+%         U_0(\nu + i v)
+%         &=  \frac{1}{(iv + \nu)(iv + \nu + 1)}\int_0^\infty u_0''(x) x^{\nu + 1} x^{i v}\dx
+%         \eqfinp
+%     \end{align*}
+% It follow that 
+%     \begin{equation*}
+%         |U_0(\nu + i v)| \leq \frac{1}{\sqrt{(\nu^2 + v^2)((1+\nu)^2 + v^2)}} \int_0^\infty |u_0''(x)| x^{\nu + 1} \dx
+%         \eqfinp
+%     \end{equation*}
+
+% We have that $\int_0^\infty |u_0''(x)| x^{\nu + 1} \dx < \infty$ from Assumption\eqref{H:DoumicEsco23}. It allows us to deduce \eqref{eq:DouEsc43} \\
+
+% Conversely, if $u_0$ satisfies \eqref{H:u0_L1}, \eqref{H:DoumicEsco22} and \eqref{H:DoumicEsco23}, then 
+%  $$u \in \Ccal([0, \infty); L^1((1+x)dx)) \cap \Ccal^1((0, \infty); L^1((1+x)dx))$$
+% where $u$ is defined by \eqref{eq:explicit_reconstruction}. By construction, it is a solution of the equation \eqref{eq:similar_pseudo_growth_equation}.
+% \end{proof}
+
+% \subsection{Speed of convergence}
+
+% In the following, we define
+%     \begin{equation*}
+%         w(t,x) := e^t u(t,x)
+%     \end{equation*}
+% Then $\forall c \in (1, 2)$
+%     \begin{equation}
+%         w(t,x) = \frac{1}{2i\pi} \int_{c - i \infty}^{c + i \infty} U_0(s) e^{\lambda K(s) t} x^{-s}\ds 
+%     \eqsepv x \in (0, \infty) \as
+%     \end{equation}
+
+% We define $s_+(t,x) := (K')^{-1} \Big( \frac{\log x}{\lambda t}\Big)$
+
+% \begin{theorem}
+%     Assume that $u_0$ satisfies the condition \ref{H:u0_L1}, \ref{H:DoumicEsco22} and \ref{H:DoumicEsco23} and let $\varepsilon(t)$ such that $\varepsilon(t)\to 0$ but $t\varepsilon^2(t) \to \infty$ as $t\to \infty$\\
+
+%  Suppose that  the measure $k_0$ has a non zero absolutely continuous part. Then for all $\delta >0$ arbitrarily small, there exists two functions $\gamma _{ \delta  } (\varepsilon )$ and $\omega _{ \delta  } (\varepsilon )$ such that:
+
+% \begin{eqnarray}
+% &&u(t, x)=x^{-s_+(t, x)}e^{(K(s_+(t, x))-1)t}\times \nonumber\\
+% &&\hskip 3cm \left(  \frac {U_0(s_+(t, x))+\omega _{ \delta  } (\varepsilon )} {\sqrt{2\pi t K''(s_+)}}\,\Theta_1(t)+\mathcal O\left(e^{- t\gamma  _{ \delta  }(\varepsilon (t)) }\right)  \right) \label{theorem3:1}\\
+% &&\hskip 1.5cm \hbox{as}\,\,t\to \infty,\,\,\hbox{uniformly for}\; x\;\hbox{such that}\,\,  p_0+\delta<s _+(t, x)<q_0-\delta, \nonumber\\
+% &&\Theta_1(t)=\left(1+
+%  \mathcal O\left(\frac {e^{-\frac {t\varepsilon^2 (t)} {2}K''(q_0)}} {\sqrt {t \varepsilon^2 (t)K''(q_0)}}\right)\right),\,\,\,\hbox{as}\,\,t\to \infty\label{theorem3:2}
+% \end{eqnarray}
+% where,  $\lim _{ \varepsilon \to 0}\varepsilon  ^{-2}\gamma _{ \delta  }  (\varepsilon  )=C _{ \delta  }$ for some constant $C _{ \delta  }\in (K^{''} (q_0) /2 ,  K^{''} (p_0)/2)$. The function  $\omega _{ \delta  }(\varepsilon )$, defined later, satisfies
+% \begin{eqnarray}
+% \label{theorem3:omega}
+% &&|\omega _{ \delta  } (\varepsilon )|\le C (p_0+\delta,q_0-\delta)\left( \int _{R(\varepsilon )}^\infty \left|z^{q_0-\delta-1}u_0(z)\right|dz+\right. \nonumber \\
+% &&\hskip 4cm \left. +\int _0^{\frac {1} {R(\varepsilon )}} \left|z^{p_0+\delta-1}u_0(z)\right|dz+\varepsilon  \log R(\varepsilon )\right),
+% \end{eqnarray}
+% where the constant $C(p_0+\delta,q_0+\delta)$ depends on the integrability properties of $u_0$, $R$ is any function such that $R(\varepsilon )\to \infty$, $\varepsilon \log R(\varepsilon )\to 0$ as $\varepsilon \to 0$.
+% \end{theorem}
+
+% \subsubsection{Proof}
+
+% Here, we want to apply the \textit{steepest descent method} \cite{debye1909naherungsformeln} when $t \to \infty$.
+
+% We recall that 
+%     \begin{equation*}
+%         \omega(t,x)
+%         = \int_{c-i\infty}^{c+i\infty} U_0(s) e^{\lambda K(s)t}x^{-s} \ds
+%         =  \int_{c-i\infty}^{c+i\infty} U_0(s) e^{\phi(s, t, x)} \ds
+%         \eqfinp
+%     \end{equation*}
+% with $\phi(s,t,x) := \lambda K(s) t - s \ln(x) $.\\
+
+% In order to apply the steepest descent method, our first step consist in finding the stationary point of $\phi'(\cdot, t, x) = 0$. 
+
+% Define $p_0 < s_+(t,x) := (K')^{-1} \Big( \frac{\log x}{\lambda t} \Big) < q_0$.
+
+% \paragraph{\ul{Step 1 -- Show that $s \mapsto \Re(\phi(s, t, x))$ reachs its maximum at $s_+(t, x)$}} \text{}\\
+
+% $\blacktriangleright$ Consider a neighborhood of $s_+(t,x)$ : $|s - s_+(t,x)| < \varepsilon$. We have
+% \begin{equation}
+%     K(s) = K(s_+) + (s - s_+(t,x)) K'(s_+(t,x)) + \frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + \frac{(s - s_+(t,x))^3}{6} K'''(c(t,x))
+% \end{equation}
+% where $s < c(t,x) < s_+(t,x)$.
+%     \begin{align*}
+%          |K'''(c)|
+%          &= |\int_0^1 (\log z)^3 k_0(z) e^{(c-1)\log(z)}\dz|
+%          \leq \int_0^1 |(\log z)^3| k_0(z)  e^{\Re (c-1)\log(z)}\dz \\
+%          &\leq  \boxed{\int_0^1 |(\log z)^3| k_0(z)  e^{(q_0-1)\log(z)}\dz < \infty}
+%     \end{align*}
+    
+% Given that $|s - s_+| < \varepsilon$ and $s_+ + \varepsilon < q_0$, we have 
+%     \begin{equation}
+%         \Re K(s) = K(s_+) + \frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)
+%         \eqfinp
+%     \end{equation}
+% and 
+%     \begin{equation}
+%         \Re \phi(s, t, x) = \phi(s_+, t, x) + \lambda t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)
+%         \eqfinp
+%     \end{equation}
+
+    
+% $\blacktriangleright$ Outside the neighborhood of $s_+(t,x)$ : $|s - s_+(t,x)| < \varepsilon$. We have
+%     \begin{align*}
+%         \Re(\phi(s_+ + i \nu, t, x) - \phi(s_+, t, x)) 
+%         &=
+%         \Re \bigg( \int_0^1 x^{s_+ - 1}k_0(x) (x^{i\nu} - 1) \dx \bigg) \\
+%         &=
+%         \Re \bigg( \int_0^1 x^{s_+ - 1}k_0(x) (e^{i\nu \log(x)}- 1) \dx \bigg) \\ 
+%         &= 
+%         \int_0^1 x^{s_+ - 1}k_0(x) [\cos(\nu \log(x))- 1] \dx  \\
+%         &=: G(v) \leq 0
+%         \eqfinp
+%     \end{align*}
+    
+% Recall the that $k_0(x) = g(x)dx + \dmu + \dnu$ where
+% $g \in L^1(\dx)$
+% $\dmu$ is a singular continuous measure and $\dnu$ a singular discrete measure.\\ 
+
+% In the following, we assume that $k_0(x) :=  g(x)dx$.\\
+
+% For any $\nu \in \RR \setminus \{0\}$, we have
+% \begin{equation}
+%      \int_0^1 x^{s_+ - 1}g(x) [\cos(\nu \log(x))] \dx < \int_0^1 x^{s_+ - 1}g(x) \dx
+%      \eqfinp
+% \end{equation}
+
+% It follows that $G(\nu) < 0$, then there exists $\varepsilon > 0$, $R >0$ and $\delta > 0$
+%  such that $\sup_{\varepsilon < \nu < R}G(\nu) < - \delta$.\\
+ 
+%  It remains to verify that $\lim_{\nu \to +\infty}G(\nu) \neq 0$. 
+%     \begin{align*}
+%         G(\nu) 
+%         &=  \int_0^1 x^{s_+ - 1}k_0(x) [\cos(\nu \log(x))- 1] \dx \\
+%         &=  \int_{0}^\infty e^{-s_+ y}k_0(e^{-y})(\cos(-\nu y) - 1 )\dy
+%         \end{align*}
+% From Riemann–Lebesgue lemma, we have that 
+%     \begin{equation}
+%         \lim_{\nu \to +\infty}G(\nu) = - \int_{0}^\infty e^{-s_+ y}k_0(e^{-y})\dy = - \int_{0}^1 x^{s_+ - 1}k_0(x)\dx < 0
+%     \end{equation}
+    
+% Therefore
+% \begin{lemma} For all $\varepsilon > 0$, there exist $\gamma(\varepsilon)$ such
+%     \begin{equation}
+%         \sup_{|\nu| \geq \varepsilon } \Re(\phi(s_+ + i \nu, t, x)) \leq \Re(\phi(s_+, t, x)) - \gamma(\varepsilon)
+%         \eqfinp
+%     \end{equation}
+% and
+%     \begin{equation}
+%         \sup_{|\nu| \leq \varepsilon } \Re(\phi(s_+ + i \nu, t, x)) \leq \Re(\phi(s_+, t, x))
+%         \eqfinp
+%     \end{equation}
+% \end{lemma}
+
+% \paragraph{\ul{Step 2 -- Use of the right path}} \text{}\\
+
+% Close to $s_+(t,x)$, we consider the quantity
+%     \begin{align*}
+%     \frac{1}{2i \pi} \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} U_0(s) e^{\phi(s,t,x)} \ds 
+%     &=
+%     \frac{1}{2i \pi} U_0(s_+(t,x)) \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{\phi(s,t,x)} \ds
+%     \\
+%     & \qquad \qquad \qquad+ 
+%     \frac{1}{2i \pi} \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} (U_0(s) -  U_0(s_+(t,x)))  e^{\phi(s,t,x)} \ds \\
+%     &= I_1 + I_2
+%     \end{align*}
+    
+% $\blacktriangleright$ \ul{The terme $I_1$}
+% For any $s \in (s_+ - i \infty, s_+ + i \infty)$ such that $|s - s_+| < \varepsilon$
+% We know that 
+%     \begin{equation}
+%         \Re \phi(s, t, x) = \phi(s_+, t, x) + t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)
+%         \eqfinp
+%     \end{equation}
+
+% Then 
+% \begin{align*}
+%    \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{\Re \phi(s,t,x)} \ds
+%     &=
+%     e^{\phi(s_+, t, x)} \cdot \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds \\
+%     &= 
+%      i e^{\phi(s_+, t, x)} \cdot \int_{- \varepsilon}^{\varepsilon} e^{t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds \\
+%     &= 
+%      i e^{\phi(s_+, t, x)} \cdot \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds 
+% \end{align*}
+
+% Now we can see that we are back to the classical method of Laplace. The main idea is to transform the previous integral into a Gauss integral to have
+%     \begin{equation}
+%     \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds 
+%     \sim_{t \to \infty}
+%     \sqrt{2\pi} \frac{1}{\sqrt{tK''(s_+)}}
+%     \end{equation}
+    
+% Indeed, 
+% \begin{align*}
+%     \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} 
+%     &= 
+%      \frac{1}{\sqrt{tK''(s_+)}} \int_{- \varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}^{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})} e^{- \frac{y^2}{2}}\dy \\
+%      \intertext{and}
+%      \int_{- \varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}^{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})} e^{- \frac{y^2}{2}}\dy &= 
+%     \sqrt{2\pi} - 2 e^{-\frac{t(\varepsilon^2 K''(s_+) + \Ocal(\varepsilon^3))}{2}} \cdot \Ocal\bigg(\frac{1 }{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}\bigg)
+%     \eqfinp
+% \end{align*}
+% It follows that 
+%     \begin{align*}
+%      \frac{1}{2i\pi}   \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{\Re \phi(s,t,x)} \ds 
+%      &= 
+%      \frac{1}{2i\pi} i e^{\phi(s_+, t, x)} \cdot \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds  \\
+%      &= 
+%       \frac{1}{2\pi} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{tK''(s_+)}} \int_{- \varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}^{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})} e^{- \frac{y^2}{2}}\dy \\
+%      &=
+%     \frac{1}{2\pi} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{tK''(s_+)}} \bigg( 
+%     \sqrt{2\pi} - 2 e^{-\frac{t(\varepsilon^2 K''(s_+) + \Ocal(\varepsilon^3))}{2}} \cdot \Ocal\bigg(\frac{1 }{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}\bigg) \bigg) \\
+%     \end{align*}
+    
+% Therefore, 
+%     \begin{equation}
+%     I_1 = \frac{U_0(s_+(t,x))}{\sqrt{2\pi}} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{t \lambda K''(s_+)}} \bigg( 
+%     1 + \Ocal\bigg(\frac{e^{-\frac{t(\varepsilon^2 \lambda K''(q_0))}{2}} }{\varepsilon \sqrt{\lambda tK''(q_0)}}\bigg) \bigg)\\
+%     \end{equation}
+    
+% $\blacktriangleright$ \ul{The terme $I_2$}
+
+% We have 
+%     \begin{equation*}
+%         I_2 = \frac{1}{2i \pi} \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} (U_0(s) -  U_0(s_+(t,x)))  e^{\phi(s,t,x)} \ds 
+%     \end{equation*}
+    
+% Here, we want to go back more or less to the previous case. 
+
+%     \begin{align*}
+%          |I_2| 
+%          &= 
+%          \frac{1}{2i \pi} \sup_{|v| \leq \varepsilon} \big[U_0(s_+ + iv) -  U_0(s_+) \big] \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} \big| e^{\phi(s,t,x)} \big| \ds \\
+%          &=
+%          \sup_{|v| \leq \varepsilon} \big[U_0(s_+ + iv) -  U_0(s_+) \big] \frac{1}{\sqrt{2\pi}} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{t \lambda K''(s_+)}} \bigg( 
+%     1 + \Ocal\bigg(\frac{e^{-\frac{t(\varepsilon^2 \lambda K''(q_0))}{2}} }{\varepsilon \sqrt{\lambda tK''(q_0)}}\bigg) \bigg)
+%     \end{align*}
+    
+% It only remains to study $  \sup_{|v| \leq \varepsilon} \big[U_0(s_+ + iv) -  U_0(s_+) \big]$ \\
+
+% By Definition
+% \begin{align*}
+%     \big[U_0(s_+ + iv) -  U_0(s_+) \big]
+%     &= \Big| \int_0^\infty  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \dz \Big| \\
+%     &\leq \int_0^{\frac{1}{R}} \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz
+%         + \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz \\
+%         &\qquad \qquad \qquad \qquad
+%         + \int_R^{+\infty} \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz \\
+%     &\leq 2 \int_0^{\frac{1}{R}} \Big|  z^{p_0 + \delta - 1}u_0(z) \Big| \dz
+%         +  \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz \\
+%         &\qquad \qquad \qquad \qquad
+%         + 2 \int_R^{+\infty} \Big|  z^{q_0 - \delta - 1}u_0(z) \Big| \dz \\
+% \end{align*}
+
+% If $R \to + \infty$, then the first and the third terms vanish. Therefore, we only need to consider the integral $ \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz$. We have
+%     \begin{align*}
+%          \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz 
+%          &\leq 
+%           (\varepsilon \log R)\int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) \Big| \dz \\
+%          &\leq 
+%           (\varepsilon \log R)\int_{\frac{1}{R}}^R \Big|  (z^{p_0 + \delta - 1} + z^{q_0 - \delta - 1}) u_0(z) \Big| \dz \\
+%     \end{align*}
+
+% \subsection{Interpretation}
+
+
+% We may rewrite 
+% $$x u(t,x)\approx A(t,s_+) e^{t F(s_+(t,x))}$$
+% where we define $F$ by
+% \begin{equation*}
+% F(s)={ K}( s)-1-(s-1) K'\left(s\right).
+% \end{equation*}
+
+% The behavior of $xu$ depends on the signe of $F$. 
+
+\section{The Mutation Equation : mutation can be deleterious or beneficial}
+
+\subsection{Location of the population}
+
+Consider the equation
+\begin{equation}\left\{
+    \begin{array}{ll}
+	\frac{\partial}{\partial t}u(t,x) = - \lambda u(t,x) + \lambda \int_{0}^{\infty} k\big( \frac{x}{y}\big)u(t,y) \frac{\dy}{y}
+	\eqsepv
+	& t \in (0, \infty), x \in \RR_+, \lambda \in (0, \infty) \eqfinv
+	\\
+	u(0, x) = u_0(x)
+	& x \in \RR_+
+	\eqfinp
+    \end{array}
+	\right.
+    \label{eq:main}
+\end{equation}
+
+We assume that the initial data $u_0(x)$ is a function satisfying the following conditions 
+$$ u_0 \geq 0 \eqsepv \int_0^\infty u_0(x)(1+x)\diff x < \infty.$$
+It follows that the Mellin transform of $u_0$, $U_0(s)= \int_0^\infty x^{s-1}u(t,x)\diff x$ is analytic on the strip $\Re(\alpha) \in (p_0,q_0)$ where $p_0 \leq 1 < 2 \leq q_0$ \\
+For the simplicity, we assume that 
+$ p_0=-\infty$ and $q_0 = \infty$\\
+
+By applying the Mellin transform for Equation~\eqref{eq:main}, we have
+	\begin{equation}
+		\frac{\partial}{\partial t} U(t,s) = - \lambda U(t,s) + \lambda K(s) U(t,s)
+		\eqfinp
+        \label{eq:explicit_reconstruction}
+	\end{equation}
+If we have some good hypothesis (see Section~\ref{s:explicit}) on $U_0$ and $K$, then we have an explicit formula for the inverse Mellin transform and it follows that
+    \begin{equation*}
+        U(t,s) = U_0(s) e^{-\lambda t(1 - K(s) ) }
+        \eqsepv
+        U_0(s) = \Mcal_{u_0}(s)
+        \eqfinp
+    \end{equation*}²
+
+Here, $K$ is a convex function, such that $K(1) = 1$. We denote $s_* = \argmin_{s\in \RR} K(s)$. 
+
+\begin{lemma}If $K$ is stricty increasing, then 
+    $\supp(K) \cap [0,1] = \emptyset$,
+\end{lemma}
+\begin{proof}By derivating $K$, we have that 
+    \begin{align*}
+        K'(s) = \int_0^\infty \ln(x)k_0(x)x^{s-1}\diff x > 0,\quad \text{for all $s \in \RR$}
+    \end{align*}
+It follows that 
+\begin{align*}
+    \int_1^\infty \ln(x)k_0(x)x^{s-1}\diff x > -\int_0^1 \ln(x)k_0(x)x^{s-1}\diff x,\quad \text{for all $s \in \RR$}
+\end{align*}
+Suppose the existence of $x_0 \in [0,1]$ such that $k_0 > 0$ neighborhood of $[x_0-\delta, x_0+\delta] \subset[0,1]$. It follows that 
+\begin{align*}
+    \int_1^\infty \ln(x)k_0(x)x^{s-1}\diff x > -\int_0^1 \ln(x)k_0(x)x^{s-1}\diff x
+    > -\int_{x_0-\delta}^{x_0+\delta} \ln(x)k_0(x)x^{s-1}\diff x,\quad \text{for all $s \in \RR$}
+\end{align*}
+Let $m_0 = \min_{[x_0-\delta, x_0+\delta]} k_0$
+\begin{align*}
+    -\int_{x_0-\delta}^{x_0+\delta} \ln(x)k_0(x)x^{s-1}\diff x,
+    > - m_0\int_{x_0-\delta}^{x_0+\delta} \ln(x)x^{s-1}\diff x
+    \to_{s \to -\infty} \infty.
+\end{align*}
+It's absurde. 
+\end{proof}
+
+\subsection{A stupid lemma}
+
+\begin{lemma}Let $k_0$ be a positive measure on $\RR_+$ and $K(s) = \int_0^\infty x^{s-1}k_0(\diff x)$ its Mellin transform. We note $<p_0,q_0>$the fundamental strip of $K$.
+\begin{enumerate}
+    \item If $K$ is strictly decreasing, then $q_0 = \infty$ and  $\supp k_0 \subset [0,1]$.
+    \item If $K$ is strictly increasing, then $p_0 = -\infty$ and $\supp k_0 \subset [1, \infty]$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\textit{2st case}: If $K$ is strictly increasing, then there is a real $K_{lim} > 0$ such that $$K(s) \to K_{lim} \mtext{as} s \to p_0^+.$$\\
+But, $$K(s) = \int_0^\infty e^{(s-1)\ln x} k_0(\diff x)$$
+\begin{itemize}
+    \item For any $s \in (p_0, q_0)$, the application $x \mapsto e^{(s-1)\ln x}$ is measurable. 
+    \item The application $s \mapsto e^{(s-1)\ln x}$ is continuous in $q_0$ $k_0(\diff x)$--a.e.
+    \item For any $s \in [p_0, A], A \leq 1$,
+    $$|e^{(s-1)\ln x}|\leq \max(1,  $$
+\end{itemize}
+
+For any $s \in (-\infty, q_0)$, we have
+\begin{align*}
+    K(s) = \int_0^1 x^{s-1} k_0(\diff x) + \int_1^\infty x^{s-1} k_0(\diff x)
+\end{align*}
+where these two integrals exist because the integrands are positives and that the integrals are bounded by $K(s)$. \\
+
+Assume there exist a measurable set $A \in \Bcal(\RR_+) \cap (0,1-\varepsilon)$ for some $0 < \varepsilon < 1$ such that $k_0(A) > 0$.  It follows that 
+\begin{align*}
+   K(1) > K(s) > \int_A x^{s-1} k_0(\diff x)
+   > (1-\varepsilon)^{s-1} k_0(A)
+   \,,\quad \forall s < 1
+   \eqfinp
+\end{align*}
+But $$(1-\varepsilon)^{s-1} k_0(A) \to \infty \mtext{as} s \to -\infty$$
+It's absurd. Therefore for all measurable sets $A \subset (0,1-\varepsilon)$, $k_0(A) = 0$. It follows that  
+$$\forall A \in \Bcal\big((0,1)\big), k_0(A) = 0.$$
+Therefore, $\supp(k_0) \subset [1, \infty]$.
+\end{proof}
+
+The next proposition shows that the behaviour of the repartition of the population depends on $s_* < 1$ or $s_* > 1$. 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{pictures/severalK.png}
+    \caption{Several K}
+    \label{fig:severalK}
+\end{figure}
+
+\begin{proposition} Let $R>0$.
+    \begin{enumerate}
+        \item Suppose that $s_* < 1$, then
+            \begin{align*}
+            \lim_{t\to \infty} \int_R^\infty u(t,x) \diff x = \int_0^\infty u_0(x) \diff x
+            \eqfinp
+            \end{align*}
+        \item Suppose that $s_* > 1$, then
+            \begin{align*}
+            \lim_{t\to \infty} \int_0^R u(t,x) \diff x = \int_0^\infty u_0(x) \diff x
+            \eqfinp
+            \end{align*}
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}\text{}\\
+
+\textbf{First case:} Suppose that $s_* < 1$. Let $c$ be a real $>1$. 
+By Mellin inversion, we have that
+\begin{align*}
+    u(t,x) = \frac{1}{2i\pi}\int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff s
+\end{align*}
+
+It follows that
+\begin{align*}
+    \int_R^\infty u(t,x) \diff x 
+    &= \frac{1}{2i\pi} \int_R^\infty \int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff s \diff x \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \int_R^\infty U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff x \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} U_0(s) \frac{R^{-s+1}}{s-1} e^{-\lambda t(1 - K(s))} \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty}\frac{U_0(s)}{s-1} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R} \diff s 
+\end{align*}
+(The exchange between the two integrals come from the fact that $c > 1$.)
+
+We deform the integration contour towards the left and cross the pole $s = 1$. The Cauchy's residue theorem ensures that
+\begin{align}
+    \int_R^\infty u(t,x) \diff x &= \mathrm{Res(1)} + \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{s-1} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R} \diff s
+    \label{eq:cauchy1}
+\end{align}
+
+We define
+\begin{align*}
+    \Rcal(t) = \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{s-1} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R} \diff s
+    \eqfinp
+\end{align*}
+We have 
+\begin{align*}
+    |\Rcal(t)| 
+    &\leq \frac{R^{1-s_*}}{2\pi} \int_{s_*-i\infty}^{s_*+i\infty} \left|\frac{U_0(s) }{s-1}\right| \cdot \left|e^{-\lambda t(1 - K(s))}\right| \diff s \\
+    &= \frac{R^{1-s_*}}{2\pi} \int_{s_*-i\infty}^{s_*+i\infty} \left|\frac{U_0(s) }{s-1}\right| e^{\Re[-\lambda t(1 - K(s))]} \diff s
+    \eqfinp
+\end{align*}
+However, for all $s = s_* + i\nu \in (s_*-i \infty, s_* + i \infty)$
+\begin{align*}
+    \Re[-\lambda t(1 - K(s))] 
+    &= \Re[-\lambda t(K(1) - K(s))] \\
+    &= -\lambda t \Re\left( K(1) - \int_0^\infty z^{s-1}k_0(z)\diff z  \right) \\
+    &= -\lambda t \Re\left( K(1) - \int_0^\infty z^{s-1}k_0(z)\diff z  \right) \\
+    &=  -\lambda t\left( K(1) - \int_0^\infty \cos(\nu \log z) z^{s_*-1}k_0(z)\diff z  \right) \\
+    &\leq -\lambda t \left( K(1) - \int_0^\infty z^{s_*-1}k_0(z)\diff z  \right) \\
+    &= -\lambda t \left( K(1) - K(s_*)  \right)
+\end{align*}
+By Taylor's expansion in $s_*$, there exists a real $\xi \in (s_*, 1)$ such that 
+\begin{align*}
+    \Re[-\lambda t(1 - K(s))] = - \lambda t \frac{(s_*-1)^2}{2}  K''(\xi) 
+\end{align*}
+As $ K''(\xi) > 0$, it follows that 
+\begin{align*}
+    |\Rcal(t)| 
+    &\leq \frac{R^{1-s_*}}{2\pi} \int_{s_*-i\infty}^{s_*+i\infty} \left|\frac{U_0(s) }{s-1}\right| e^{\Re[-\lambda t(1 - K(s))]} \diff s
+    \eqfinp \\
+    &= \frac{R^{1-s_*}}{2\pi} \int_{s_*-i\infty}^{s_*+i\infty} \left|\frac{U_0(s) }{s-1}\right| e^{- \lambda t \frac{(s_*-1)^2}{2}  K''(\xi) } \diff s \\
+    &= e^{- \lambda t \frac{(s_*-1)^2}{2}  K''(\xi)} \times \frac{R^{1-s_*}}{2\pi} \int_{s_*-i\infty}^{s_*+i\infty} \left|\frac{U_0(s) }{s-1}\right| \diff s \\
+    &\to_{t \to \infty} 0
+    \eqfinp
+\end{align*}
+
+Using Equation~\ref{eq:cauchy1}, it follows that 
+
+\begin{align*}
+    \int_R^\infty u(t,x) \diff x &= \mathrm{Res(1)} + \Rcal(t) \\
+    &= \lim_{s \to 1} (s-1)\frac{U_0(s)}{s-1} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R}  + \Rcal(t)\\
+    &= U_0(1) + \Rcal(t)\\
+    &\to_{t \to \infty} \int_0^\infty u_0(x) \diff x
+    \eqfinp
+\end{align*}
+
+\textbf{Second case:} Suppose that $s_* > 1$. Let $c$ be a real $<1$. \\
+By Mellin inversion, we have that
+\begin{align*}
+    u(t,x) = \frac{1}{2i\pi}\int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff s
+\end{align*}
+
+It follows that
+\begin{align*}
+    \int_0^R u(t,x) \diff x 
+    &= \frac{1}{2i\pi} \int_0^R \int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff s \diff x \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \int_0^R U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff x \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} U_0(s) \frac{R^{-s+1}}{1-s} e^{-\lambda t(1 - K(s))} \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \frac{U_0(s)}{1-s} e^{-\lambda t(1 - K(s))} e^{(1-s)\ln R} \diff s \\
+\end{align*}
+We deform the integration contour towards the right and cross the pole $s = 1$. The Cauchy's residue theorem ensures that
+\begin{align}
+    \int_0^R u(t,x) \diff x &= -\mathrm{Res(1)} + \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{1-s} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R} \diff s
+    \label{eq:cauchy3}
+\end{align}
+
+As previously, we define
+\begin{align*}
+    \Rcal(t) = \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{1-s} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R} \diff s
+    \eqfinp
+\end{align*}
+and we can show that $\lim_{t\to\infty}\Rcal(t) = 0$. Using Equation~\ref{eq:cauchy3}, it follows that 
+
+\begin{align*}
+    \int_0^R u(t,x) \diff x &= -\mathrm{Res(1)} + \Rcal(t) \\
+    &= -\lim_{s \to 1} (s-1)\frac{U_0(s)}{1-s} e^{-\lambda t(1 - K(s))} e^{(-s+1)\ln R}  + \Rcal(t)\\
+    &= U_0(1) + \Rcal(t)\\
+    &\to_{t \to \infty} \int_0^\infty u_0(x) \diff x
+    \eqfinp
+\end{align*}
+\end{proof}
+
+\subsection{Location of the moment}
+
+\begin{proposition} Let $n>1$ be an integer. Suppose that $K$ is minimum in $s_* > 1$, then for all $R > 0$
+    \begin{enumerate}
+        \item If $s_* > n$ then 
+    \begin{align*}
+        \lim_{t\to \infty} \int_0^R x^{n-1} u(t,x) \diff x = 0
+        \eqfinp
+    \end{align*}
+        \item If $s_* < n$ then 
+        \begin{enumerate}
+            \item If $K(n) < 1$
+            \begin{align*}
+                \lim_{t\to \infty} \int_R^{\infty} x^{n-1} u(t,x) \diff x = 0
+                \eqfinp
+            \end{align*}
+            \item If $K(n) > 1$
+            \begin{align*}
+                \lim_{t\to \infty} \int_R^{\infty} x^{n-1} u(t,x) \diff x = \infty
+                \eqfinp
+            \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\textbf{First case:}
+
+Suppose that $s_* > n$. Let $c$ be a real $<n$. \\
+    By Mellin inversion, we have that
+    \begin{align*}
+        u(t,x) = \frac{1}{2i\pi}\int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s} e^{-\lambda t(1 - K(s))} \diff s
+    \end{align*}
+
+It follows that
+\begin{align*}
+    \int_0^R x^{n-1}u(t,x) \diff x 
+    &= \frac{1}{2i\pi} \int_0^R \int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s+n-1} e^{-\lambda t(1 - K(s))} \diff s \diff x \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \int_0^R U_0(s) x^{-s+n-1} e^{-\lambda t(1 - K(s))} \diff x \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} U_0(s) \frac{R^{-s+n}}{n-s} e^{-\lambda t(1 - K(s))} \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \frac{U_0(s)}{n-s} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s
+\end{align*}
+We deform the integration contour towards the right and cross the pole $s = n$. The Cauchy's residue theorem ensures that
+\begin{align}
+    \int_0^R x^{n-1}u(t,x) \diff x &= -\mathrm{Res(n)} + \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{n-s} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s 
+    \label{eq:cauchyn}
+\end{align}
+
+
+As previously, we define
+\begin{align*}
+    \Rcal(t) = \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{n-s} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s
+    \eqfinp
+\end{align*}
+and we can show that $\lim_{t\to\infty}\Rcal(t) = 0$. Using Equation~\ref{eq:cauchyn}, and the fact that $K(n) < 1$ it follows that 
+
+
+\begin{align*}
+    \int_0^R x^{n-1}u(t,x) \diff x &= -\mathrm{Res(n)} + \Rcal(t) \\
+    &= -\lim_{s \to n} (s-n)\frac{U_0(s)}{n-s} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R}  + \Rcal(t)\\
+    &= U_0(n)e^{-\lambda t(1 - K(n))} + \Rcal(t)\\
+    &\to_{t \to \infty} 0
+    \eqfinp
+\end{align*}
+
+\textbf{Second case:}
+
+Suppose that $s_* < n$. Let $c$ be a real $>n$. \\
+    By Mellin inversion, we have that
+    \begin{align*}
+        u(t,x) = \frac{1}{2i\pi}\int_{c-i\infty}^{c+i\infty} U_0(s) x^{s} e^{-\lambda t(1 - K(s))} \diff s
+    \end{align*}
+
+It follows that
+\begin{align*}
+    \int_0^R x^{n-1}u(t,x) \diff x 
+    &= \frac{1}{2i\pi} \int_R^{\infty} \int_{c-i\infty}^{c+i\infty} U_0(s) x^{-s+n-1} e^{-\lambda t(1 - K(s))} \diff s \diff x \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \int_R^{\infty} U_0(s) x^{-s+n-1} e^{-\lambda t(1 - K(s))} \diff x \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} U_0(s) \frac{R^{-s+n}}{s-n} e^{-\lambda t(1 - K(s))} \diff s \\
+    &= \frac{1}{2i\pi} \int_{c-i\infty}^{c+i\infty} \frac{U_0(s)}{s-n} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s
+\end{align*}
+We deform the integration contour towards the left and cross the pole $s = n$. The Cauchy's residue theorem ensures that
+\begin{align}
+    \int_R^{\infty} x^{n-1}u(t,x) \diff x &= \mathrm{Res(n)} + \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{s-n} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s 
+    \label{eq:cauchyn}
+\end{align}
+
+
+As previously, we define
+\begin{align*}
+    \Rcal(t) = \frac{1}{2i\pi} \int_{s_*-i\infty}^{s_*+i\infty} \frac{U_0(s)}{s-n} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s
+    \eqfinp
+\end{align*}
+and we can show that $\lim_{t\to\infty}\Rcal(t) = 0$. Using Equation~\ref{eq:cauchyn}
+
+
+\begin{align*}
+    \int_0^R x^{n-1}u(t,x) \diff x &= \mathrm{Res(n)} + \Rcal(t) \\
+    &= \lim_{s \to n} (s-n)\frac{U_0(s)}{s-n} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R}  + \Rcal(t)\\
+    &= U_0(n)e^{-\lambda t(1 - K(n))} + \Rcal(t)\\
+\end{align*}
+
+It follows that 
+\begin{equation}
+    \int_0^R x^{n-1}u(t,x) \diff x \to_{t \to \infty}
+    \begin{cases}
+    0 \text{ if $K(n) < 1$}\\
+    \infty \text{ if $K(n) > 1$}
+    \end{cases}
+    \eqfinp
+\end{equation}
+
+\end{proof}
+
+\begin{remark}
+    We can change the path of integration because : 
+\end{remark}
+\begin{proof}
+    Let $M > 0$. For any $s_* < c$, we have that 
+    \begin{align*}
+        \bigg| \int_{s_*+iM}^{c+iM} \frac{U_0(s)}{n-s} e^{-\lambda t(1 - K(s))} &e^{(-s+n)\ln R} \diff s \bigg|
+        \\
+        &\leq 
+     \int_{c+iM}^{s_*+iM} \left|\frac{U_0(s)}{n-s}\right| e^{-\lambda t(1 - K(s_*))} e^{\Re((-s+n))\ln R} \diff s \\
+     &= 
+     \int_{c}^{s_*} \left|\frac{U_0(s+iM)}{n-s-iM}\right| e^{-\lambda t(1 - K(s_*))} e^{(-s+n)\ln R} \diff s.
+    \end{align*}
+But, for all $s \in (s_*, c)$
+\begin{align*}
+    \left|\frac{1}{n-s-iM}\right| = \left|\frac{n-s + iM}{(n-s)^2+M^2}\right| \leq \frac{|n-s|}{M^2} + \frac1M
+\end{align*}
+It follows that $$ \bigg| \int_{s_*+iM}^{c+iM} \frac{U_0(s)}{n-s} e^{-\lambda t(1 - K(s))} e^{(-s+n)\ln R} \diff s \bigg| \to 0$$ when $M \to \infty$.
+\end{proof}
+
+\subsection{An explicit solution}
+\label{s:explicit}
+
+We assume that     \begin{equation}
+    u_0 \geq 0 \mtext{and} \int_0^\infty u_0(x) (1+x) \dx < \infty
+    \eqfinp
+    \label{H:u0_L1}
+\end{equation}
+
+Define 
+\begin{equation}
+    I(u_0) := \left\{ p \in \RR \eqsepv \int_0^\infty u_0(x) x^{p-1} \dx < \infty \right\}
+    \eqfinp
+\end{equation}
+By Assumption~\eqref{H:u0_L1}, $[1, 2] \subset I(u_0)$. Moreover $I(u_0)$ is a interval of $\RR$.\\
+It leads us to define
+\begin{subequations}
+\begin{align*}
+    p_0 &= \inf \{p : p \in I(u_0) \} \in [-\infty, 1] \eqfinv\\
+    q_0 &= \sup \{q : q \in I(u_0) \} \in [2, \infty] \eqfinp
+\end{align*}    
+\end{subequations}
+
+For the simplicity, we assume that 
+$ p_0=-\infty$ and $q_0 = \infty$
+
+We also assume that 
+\begin{equation}
+    \forall \nu \in (p_0, q_0) 
+    \eqsepv
+    \int_0^\infty |u_0'(x)| x^\nu \dx < \infty
+    \eqsepv
+    \lim_{x \to 0} x^\nu u_0(x) = 0
+    \eqsepv
+    \lim_{x \to \infty} x^\nu u_0(x) = 0
+    \label{H:DoumicEsco22}
+\end{equation}
+\begin{equation}
+    \forall \nu \in (p_0, q_0) 
+    \eqsepv
+    \int_0^\infty |u_0''(x)| x^\nu \dx < \infty
+    \eqsepv
+    \lim_{x \to 0} x^{\nu + 1} u_0'(x) = 0
+    \eqsepv
+    \lim_{x \to \infty} x^{\nu + 1} u_0'(x) = 0
+    \label{H:DoumicEsco23}
+\end{equation}
+
+\begin{theorem}(Existence of an explicit solution) Assume \eqref{H:u0_L1}, \eqref{H:DoumicEsco22} and \eqref{H:DoumicEsco23}.
+    Then, there exists a unique function $u \in \Ccal([0, \infty); L^1((1+x)dx)) \cap \Ccal^1((0, \infty); L^1((1+x)dx))$ that satisfies Equation~\eqref{eq:main} for all $t > 0$ and almost every $x > 0$. This solution is given by \eqref{eq:explicit_reconstruction} for all $\nu \in (p_0, q_0)$.
+    \end{theorem}
+    \begin{proof}
+    The result is a consequence of the Mellin inversion formula.
+    In order to apply it, we have to prove that for any $\nu \in (p_0, q_0)$, 
+        \begin{equation*}
+            \int\limits_{\nu - i \infty}^{\nu + i \infty} \bigg| U_0(s) e^{\lambda(K(s) - 1) t} x^{-s} \bigg| \ds < \infty
+            \eqfinp
+        \end{equation*}
+    We know that for all $s \in (\nu - i\infty, \nu + i\infty)$, 
+        \begin{equation*}
+             \bigg| U_0(s) e^{\lambda(K(s) - 1) t} x^{-s} \bigg|  <   \bigg| U_0(s)  e^{\lambda(K(\nu) - 1) t}  x^{-\nu} \bigg|
+        \end{equation*}
+    
+    It only remains to prove that 
+        \begin{equation}
+                \int\limits_{\nu - i \infty}^{\nu + i \infty} \big| U_0(s)\big| \ds 
+                = 
+                \int\limits_{-\infty}^{\infty} \big| U_0(\nu + is)\big| \ds
+                < \infty
+                \label{eq:DouEsc43}
+        \end{equation}
+    
+    This quantity has already been studied under the same assumptions by Doumic and Escobedo \cite{doumic2016time}. Integration by parts lead to 
+        \begin{align*}
+            U_0(\nu + i v) 
+            &= \int_0^\infty u_0(x) x^{\nu-1}x^{i v}\dx \\
+            &= \frac{1}{iv + 1} \big[ u_0(x) x^{\nu} x^{i v} \big]_0^\infty - \frac{1}{iv + 1} \int_0^\infty (u_0(x) x^{\nu-1})' x^{i v+1}\dx \\
+            \eqfinp
+        \end{align*}
+    Assumption \eqref{H:DoumicEsco22} guarantees that $[ u_0(x) x^{\nu} x^{i v} ]_0^\infty = 0$. Therefore
+        \begin{align*}
+            U_0(\nu + i v) 
+            &= - \frac{1}{iv + 1} \int_0^\infty (u_0(x) x^{\nu-1})' x^{i v+1}\dx \\
+            &= - \frac{\nu - 1}{iv + 1} \int_0^\infty u_0(x) x^{\nu-2} x^{i v + 1}\dx  - \frac{1}{iv + 1} \int_0^\infty u_0'(x) x^{\nu-1} x^{i v + 1}\dx \\
+            &= - \frac{\nu - 1}{iv + 1} \int_0^\infty u_0(x) x^{\nu-1} x^{i v}\dx  - \frac{1}{iv + 1} \int_0^\infty u_0'(x) x^{\nu} x^{i v}\dx \\
+            &= - \frac{\nu - 1}{iv + 1} U_0(\nu + i v)   - \frac{1}{iv + 1} \int_0^\infty u_0'(x) x^{\nu} x^{i v}\dx
+            \eqfinp
+        \end{align*}
+    It follows that 
+        \begin{align*}
+            U_0(\nu + i v)
+            &= - \frac{1}{(iv + \nu)}\int_0^\infty u_0'(x) x^{\nu} x^{i v}\dx
+            \eqfinp
+        \end{align*}
+    \onlyME{It follow that 
+        \begin{equation*}
+            |U_0(\nu + i v)| \leq \frac{1}{\sqrt{\nu^2 + v^2}} \int_0^\infty |u_0'(x)| x^{\nu} \dx
+            \eqfinp
+        \end{equation*}}
+    The same calculations and Assumption\eqref{H:DoumicEsco23} allow us to obtain 
+        \begin{align*}
+            U_0(\nu + i v)
+            &=  \frac{1}{(iv + \nu)(iv + \nu + 1)}\int_0^\infty u_0''(x) x^{\nu + 1} x^{i v}\dx
+            \eqfinp
+        \end{align*}
+    It follow that 
+        \begin{equation*}
+            |U_0(\nu + i v)| \leq \frac{1}{\sqrt{(\nu^2 + v^2)((1+\nu)^2 + v^2)}} \int_0^\infty |u_0''(x)| x^{\nu + 1} \dx
+            \eqfinp
+        \end{equation*}
+    
+    We have that $\int_0^\infty |u_0''(x)| x^{\nu + 1} \dx < \infty$ from Assumption\eqref{H:DoumicEsco23}. It allows us to deduce \eqref{eq:DouEsc43} \\
+    
+    Conversely, if $u_0$ satisfies \eqref{H:u0_L1}, \eqref{H:DoumicEsco22} and \eqref{H:DoumicEsco23}, then 
+     $$u \in \Ccal([0, \infty); L^1((1+x)dx)) \cap \Ccal^1((0, \infty); L^1((1+x)dx))$$
+    where $u$ is defined by \eqref{eq:explicit_reconstruction}. By construction, it is a solution of the equation \eqref{eq:main}.
+    \end{proof}
+
+\section{The behaviour of $u(t,x)$}
+We introduce the function: 
+    \begin{align*}
+        w(t,x) = e^t u(t,x)
+        \eqfinp
+    \end{align*}
+It means that
+    \begin{equation*}
+        \omega(t,x)
+        = \int_{c-i\infty}^{c+i\infty} U_0(s) e^{\lambda K(s)t}x^{-s} \ds
+        =  \int_{c-i\infty}^{c+i\infty} U_0(s) e^{\phi(s, t, x)} \ds
+        \eqfinp
+    \end{equation*}
+with $\phi(s,t,x) := \lambda K(s) t - s \ln(x) $.\\
+
+In order to apply the steepest descent method, our first step consist in finding the stationary point of $\phi'(\cdot, t, x) = 0$. 
+
+Define $ s_+(t,x) := (K')^{-1} \Big( \frac{\log x}{\lambda t} \Big)$.
+
+
+\begin{theorem}
+    Suppose that  $u_0$ satisfies the conditions : ...
+    Let $\varepsilon(t)$ be any function of $t$ such that $\varepsilon(t) \to 0$ but $t\varepsilon^2(t) \to \infty$ as $t \to \infty$
+Then for all $\delta > 0$, there exists a function $\omega_\delta$ such that:
+\begin{equation*}
+    \begin{split}
+    u(t,x) = x^{-s_+(t,x)}e^{(K(-s_+(t,x))-1)t} \times 
+    \left( \frac{U_0(s_+(t,x)+\omega_\delta(\varepsilon))}{\sqrt{2\pi tK''(s_+)}} \Theta_1(t)\right)
+    \end{split}
+\end{equation*}
+as $t\to \infty$, uniformly in $x$ such that $-A < s_+(t,x)< A$ and where 
+\begin{align*}
+    \Theta_1(t) = \left(1 + \Ocal \left( \frac{e^{-\frac{t\varepsilon^2(t)}{2}K''(s_+)}}{\sqrt{t\varepsilon^2(t)K''(s_+)}} \right) \right)
+\end{align*}
+as $t \to \infty$
+\end{theorem}
+
+\begin{proof}
+We want to apply the \textit{steepest descent method} \cite{debye1909naherungsformeln} when $t \to \infty$. For this purpose, we split $w(t,x)$ in two parts : 
+\begin{align*}
+    \omega(t,x)
+        &= \int_{s_+-i\infty}^{s_++i\infty} U_0(s)e^{\phi(s, t, x)} \ds \\
+        &= \int_{s_+-i\varepsilon}^{s_++i\varepsilon} U_0(s) e^{\phi(s, t, x)} \ds 
+        +\int_{\Re(s) = s_+, |Im(s_+)| \geq \varepsilon} U_0(s) e^{\phi(s, t, x)} \ds \\
+\end{align*}
+We want to show that the "whole mass" comes from the first term. Close to $s_+(t,x)$, we consider the quantity
+    \begin{align*}
+    \frac{1}{2i \pi} \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} U_0(s) e^{\phi(s,t,x)} \ds 
+    &=
+    \frac{1}{2i \pi} U_0(s_+(t,x)) \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{\phi(s,t,x)} \ds
+    \\
+    & \qquad \qquad \qquad+ 
+    \frac{1}{2i \pi} \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} (U_0(s) -  U_0(s_+(t,x)))  e^{\phi(s,t,x)} \ds \\
+    &= I_1 + I_2
+    \end{align*}
+
+\paragraph{\textit{Step 0 -- A first lemma:}}\mbox{}\\
+We have
+\begin{equation}
+    \begin{split}
+    K(s) = K(s_+) + (s - s_+(t,x)) K'(s_+(t,x)) + \frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) \\+ \frac{(s - s_+(t,x))^3}{6} K'''(c(t,x))
+    \end{split}
+\end{equation}
+where $s < c(t,x) < s_+(t,x)$.
+    \begin{align*}
+         |K'''(c)|
+         &= |\int_0^\infty (\log z)^3 k_0(z) e^{(c-1)\log(z)}\dz|
+         \leq \int_0^\infty |(\log z)^3| k_0(z)  e^{\Re (c-1)\log(z)}\dz \\
+         &\leq  \boxed{\int_0^\infty |(\log z)^3| k_0(z)  e^{(s_+-1)\log(z)}\dz < \infty}
+    \end{align*}
+    
+Given $\varepsilon > 0$, it follows that for all $t > 0$ and for all $x>0$ such that $|s - s_+| < \varepsilon$, 
+    \begin{equation}
+        \begin{split}
+        \Re K(s) = K(s_+) + \frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)
+        \eqfinp
+        \end{split}
+    \end{equation}
+and 
+    \begin{equation}
+        \Re \phi(s, t, x) = \phi(s_+, t, x) + \lambda t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)
+        \eqfinp
+    \end{equation}
+\medskip
+
+\paragraph{\textit{First step -- Study of $I_1$}:}\mbox{}\\
+For any $s \in (s_+ - i \infty, s_+ + i \infty)$ such that $|s - s_+| < \varepsilon$.
+We know that 
+    \begin{equation}
+        \Re \phi(s, t, x) = \phi(s_+, t, x) + t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)
+        \eqfinp
+    \end{equation}
+
+Then 
+\begin{align*}
+   \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{\Re \phi(s,t,x)} \ds
+    &=
+    e^{\phi(s_+, t, x)} \cdot \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds \\
+    &= 
+     i e^{\phi(s_+, t, x)} \cdot \int_{- \varepsilon}^{\varepsilon} e^{t \Big(\frac{(s - s_+(t,x))^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds \\
+    &= 
+     i e^{\phi(s_+, t, x)} \cdot \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds 
+\end{align*}
+
+Now we can see that we are back to the classical method of Laplace. The main idea is to transform the previous integral into a Gauss integral to have
+    \begin{equation}
+    \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds 
+    \sim_{t \to \infty}
+    \sqrt{2\pi} \frac{1}{\sqrt{tK''(s_+)}}
+    \end{equation}
+    
+Indeed, 
+\begin{align*}
+    \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} 
+    &= 
+     \frac{1}{\sqrt{tK''(s_+)}} \int_{- \varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}^{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})} e^{- \frac{y^2}{2}}\dy \\
+     \intertext{and}
+     \int_{- \varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}^{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})} e^{- \frac{y^2}{2}}\dy &= 
+    \sqrt{2\pi} - 2 e^{-\frac{t(\varepsilon^2 K''(s_+) + \Ocal(\varepsilon^3))}{2}} \cdot \Ocal\bigg(\frac{1 }{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}\bigg)
+    \eqfinp
+\end{align*}
+It follows that 
+    \begin{align*}
+     \frac{1}{2i\pi}   \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} e^{\Re \phi(s,t,x)} \ds 
+     &= 
+     \frac{1}{2i\pi} i e^{\phi(s_+, t, x)} \cdot \int_{- \varepsilon}^{\varepsilon} e^{- t \Big(\frac{v^2}{2} K''(s_+(t,x)) + O(\varepsilon^3)\Big)} \ds  \\
+     &= 
+      \frac{1}{2\pi} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{tK''(s_+)}} \int_{- \varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}^{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})} e^{- \frac{y^2}{2}}\dy \\
+     &=
+    \frac{1}{2\pi} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{tK''(s_+)}} \bigg( 
+    \sqrt{2\pi} - 2 e^{-\frac{t(\varepsilon^2 K''(s_+) + \Ocal(\varepsilon^3))}{2}} \cdot \Ocal\bigg(\frac{1 }{\varepsilon \sqrt{tK''(s_+) + \Ocal(\varepsilon})}\bigg) \bigg) \\
+    \end{align*}
+    
+Therefore, 
+    \begin{equation}
+    I_1 = \frac{U_0(s_+(t,x))}{\sqrt{2\pi}} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{t \lambda K''(s_+)}} \bigg( 
+    1 + \Ocal\bigg(\frac{e^{-\frac{t(\varepsilon^2 \lambda K''(s_+))}{2}} }{\varepsilon \sqrt{\lambda tK''(s_+)}}\bigg) \bigg)\\
+    \end{equation}
+
+\medskip
+\paragraph{\textit{Second step -- Study of $I_2$}:}\mbox{}\\
+We have 
+    \begin{equation*}
+        I_2 = \frac{1}{2i \pi} \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} (U_0(s) -  U_0(s_+(t,x)))  e^{\phi(s,t,x)} \ds 
+    \end{equation*}
+    
+Here, we want to go back more or less to the previous integral
+
+    \begin{align*}
+         |I_2| 
+         &= 
+         \frac{1}{2i \pi} \sup_{|v| \leq \varepsilon} \big[U_0(s_+ + iv) -  U_0(s_+) \big] \int_{s_+(t,x) - i\varepsilon}^{s_+(t,x) + i\varepsilon} \big| e^{\phi(s,t,x)} \big| \ds \\
+         &=
+         \sup_{|v| \leq \varepsilon} \big[U_0(s_+ + iv) -  U_0(s_+) \big] \frac{1}{\sqrt{2\pi}} e^{\phi(s_+, t, x)} \cdot \frac{1}{\sqrt{t \lambda K''(s_+)}} \bigg( 
+    1 + \Ocal\bigg(\frac{e^{-\frac{t(\varepsilon^2 \lambda K''(s_+))}{2}} }{\varepsilon \sqrt{\lambda tK''(s_+)}}\bigg) \bigg)
+    \end{align*}
+    
+It only remains to study $  \sup_{|v| \leq \varepsilon} \big[U_0(s_+ + iv) -  U_0(s_+) \big]$ \\
+
+By Definition
+\begin{align*}
+    \big[U_0(s_+ + iv) -  U_0(s_+) \big]
+    &= \Big| \int_0^\infty  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \dz \Big| \\
+    &\leq \int_0^{\frac{1}{R}} \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz
+        + \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz \\
+        &\qquad \qquad \qquad \qquad
+        + \int_R^{+\infty} \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz \\
+\end{align*}
+
+If $R \to + \infty$, then the first and the third terms vanish. Therefore, we only need to consider the integral $ \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz$. We have
+    \begin{align*}
+         \int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) (z^{iv} - 1) \Big| \dz 
+         &\leq 
+          (\varepsilon \log R)\int_{\frac{1}{R}}^R \Big|  z^{s_+ - 1}u_0(z) \Big| \dz \\
+         &\leq 
+          (\varepsilon \log R)\int_{0}^{\infty} z^{s_+ - 1}u_0(z)  \dz \\
+    \end{align*}
+
+\medskip
+\paragraph{\textit{Third step -- A second lemma}:}\mbox{}\\
+Outside the neighborhood of $s_+(t,x)$ : $|s - s_+(t,x)| < \varepsilon$. We have
+\begin{align*}
+    \Re(\phi(s_+ + i \nu, t, x) - \phi(s_+, t, x)) 
+    &=
+    \Re \bigg( \int_0^\infty x^{s_+ - 1}k_0(x) (x^{i\nu} - 1) \dx \bigg) \\
+    &=
+    \Re \bigg( \int_0^\infty x^{s_+ - 1}k_0(x) (e^{i\nu \log(x)}- 1) \dx \bigg) \\ 
+    &= 
+    \int_0^\infty x^{s_+ - 1}k_0(x) [\cos(\nu \log(x))- 1] \dx  \\
+    &=: G(v) \leq 0
+    \eqfinp
+\end{align*}
+
+For any $\nu \in \RR \setminus \{0\}$, we have
+\begin{equation}
+ \int_0^\infty x^{s_+ - 1}k_0(x) [\cos(\nu \log(x))] \dx < \int_0^\infty x^{s_+ - 1}k_0(x) \dx
+ \eqfinp
+\end{equation}
+
+It follows that $G(\nu) < 0$, then there exists $\varepsilon > 0$, $R >0$ and $\delta > 0$
+such that $\sup_{\varepsilon < \nu < R}G(\nu) < - \delta$.\\
+
+It remains to verify that $\lim_{\nu \to +\infty}G(\nu) \neq 0$. 
+\begin{align*}
+    G(\nu) 
+    &=  \int_0^\infty x^{s_+ - 1}k_0(x) [\cos(\nu \log(x))- 1] \dx \\
+    &=  \int_{-\infty}^\infty e^{-s_+ y}k_0(e^{-y})(\cos(-\nu y) - 1 )\dy
+    \end{align*}
+From Riemann–Lebesgue lemma, we have that 
+\begin{equation}
+    \lim_{\nu \to +\infty}G(\nu) = - \int_{-\infty}^\infty e^{-s_+ y}k_0(e^{-y})\dy = - \int_{0}^\infty x^{s_+ - 1}k_0(x)\dx < 0
+\end{equation}
+
+Therefore
+\begin{lemma} For all $\varepsilon > 0$, there exist $\gamma(\varepsilon)$ such
+\begin{equation}
+    \sup_{|\nu| \geq \varepsilon } \Re(\phi(s_+ + i \nu, t, x)) \leq \Re(\phi(s_+, t, x)) - \gamma(\varepsilon)t
+    \eqfinp
+\end{equation}
+and
+\begin{equation}
+    \sup_{|\nu| \leq \varepsilon } \Re(\phi(s_+ + i \nu, t, x)) \leq \Re(\phi(s_+, t, x))
+    \eqfinp
+\end{equation}
+\end{lemma}
+
+\medskip
+\paragraph{\textit{Fourth step -- Control $\int_{\Re(s) = s_+, |Im(s_+)| \geq \varepsilon} U_0(s) e^{\phi(s, t, x)} \ds$}:}\mbox{}\\
+We have that 
+\begin{align*}
+    \int_{\Re(s) = s_+, |Im(s_+)| \geq \varepsilon} U_0(s) e^{\phi(s, t, x)}
+    \ds 
+    &\leq  e^{\Re(\phi(s_+, t, x)) - \gamma(\varepsilon)t} \int_{\Re(s) = s_+, |Im(s_+)| \geq \varepsilon} U_0(s) \ds \\
+\end{align*}
+It follows that 
+\begin{align*}
+    \int_{\Re(s) = s_+, |Im(s_+)| \geq \varepsilon} U_0(s) e^{\phi(s, t, x)} 
+    \ds = \Ocal \left( e^{\Re(\phi(s_+, t, x))} \right)
+\end{align*}
+\end{proof}
+
+
+\section{Addition of a term of growth}
+
+Consider the equation
+\begin{equation*}\left\{
+    \begin{array}{ll}
+	\frac{\partial}{\partial t}u(t,x) = - \lambda u(t,x) + \lambda \int_{0}^{\infty} k\big( \frac{x}{y}\big)u(t,y) \frac{\dy}{y} + xu(t,x)
+	\eqsepv
+	& t \in (0, \infty), x \in \RR_+, \lambda \in (0, \infty) \eqfinv
+	\\
+	u(0, x) = u_0(x)
+	& x \in \RR_+
+	\eqfinp
+    \end{array}
+	\right.
+\end{equation*}
+
+By applying the Mellin transform, we have
+	\begin{equation*}
+		\frac{\partial}{\partial t} U(t,s) = - \lambda U(t,s) + \lambda K(s) U(t,s) + U(t,s+1)
+		\eqfinp
+	\end{equation*}
+It follows that
+    \begin{equation}
+        \frac{\partial}{\partial t} U(t,s) = - \lambda (1-K(s)) U(t,s) + U(t,s+1)
+		\eqfinp
+        \label{eq:addgrowth}
+    \end{equation}
+
+We consider the Laplace transform of $t \mapsto U(t,s)$
+$$ L_s(p) = \int_0^\infty U(t,s)e^{-pt}\diff t$$ 
+
+By applying the Laplace transform to Equation \eqref{eq:addgrowth} we have 
+\begin{align*}
+    pL_s(p) - U_0(s) = -  \lambda (1-K(s)) L_s(p) + L_{s+1}(p)
+\end{align*}
+It follows that 
+\begin{align*}
+    L_{s+1}(p) = - U_0(s) + \big[\lambda (1-K(s)) + p \big]L_s(p)
+    \eqfinp
+\end{align*}
+
+\begin{remark}
+We denote $\alpha(s) = \lambda (1-K(s)) + p$. If $s \in \NN$, and if all quantities are well defined, we have that
+\begin{align*}
+    L_{s+1}(p) = -U_0(s) -\sum_{n = 1}^{s} \prod_{j = n}^s \alpha(s)U_0(s-1) + L_0(p) \prod_{n = 0}^{s}\alpha(n)
+\end{align*}
+\end{remark}
+
+
+
+\section{An easier equation with growth}
+
+We consider the Cauchy problem:
+\begin{equation*}\left\{
+    \begin{array}{ll}
+	\frac{\partial}{\partial t}u(t,x) = - x\lambda u(t,x) + \lambda \int_{0}^{\infty} y k\big( \frac{x}{y}\big) u(t,y) \frac{\dy}{y} + xu(t,x)
+	\eqsepv
+	& t \in (0, \infty), x \in \RR_+, \lambda \in (0, \infty) \eqfinv
+	\\
+	u(0, x) = u_0(x)
+	& x \in \RR_+
+	\eqfinp
+    \end{array}
+	\right.
+\end{equation*}
+
+By applying the Mellin transform in the $x$ variable, we have
+	\begin{equation*}
+		\frac{\partial}{\partial t} U(t,s) = - \lambda U(t,s+1) + \lambda K(s) U(t,s+1) + U(t,s+1)
+		\eqfinp
+	\end{equation*}
+It follows that
+    \begin{equation}
+        \frac{\partial}{\partial t} U(t,s) = \left[- \lambda (1-K(s)) + 1\right] U(t,s+1)
+		\eqfinp
+        \label{eq:addgrowtheasy}
+    \end{equation}
+
+We consider the Laplace transform of $t \mapsto U(t,s)$
+$$ L_s(p) = \int_0^\infty U(t,s)e^{-pt}\diff t$$ 
+
+By applying the Laplace transform to Equation \eqref{eq:addgrowtheasy} in the $t$ variable we have 
+\begin{align*}
+    pL_s(p) - U_0(s) = \left[- \lambda (1-K(s)) + 1\right] L_{s+1}(p)
+\end{align*}
+It follows that 
+\begin{align}
+    \label{eq:wienerhopfeq}
+    pL(s,p) = \left[- \lambda (1-K(s)) + 1\right] L(s+1,p) + U_0(s)
+\end{align} 
+
+\medskip
+
+Therefore, our goal is to find for any $p \in \CC$ such that $\Re(p) > 0$ a function $L(\cdot,p)$ analytic in the strip $S = \{\xi \in \CC \mid \Re(\xi) \in (s_0, s_0+1)\}$
+
+\medskip
+
+The analycity of $L(\cdot,p)$ strongly depends on the analyticity properties of $K$.
+
+\subsection{Reformulating the equation}
+
+We introduce the variables:
+    \begin{align}
+        \zeta &= T(s) = e^{2i\pi(s-s_0)},\\
+        g(z,\zeta) &= L(s,p), \\
+        \tilde \varphi(\zeta) &= \left[- \lambda (1-K(s)) + 1\right].
+    \end{align}
+
+We denote as $D = \{ \zeta \in \CC \mid \zeta = re^{i\theta}, r > 0, 0 < \theta < 2\pi \}$. \\
+
+It follows that 
+\begin{align}
+    \label{eq:WH3.5}
+    zg(z, x+i0) = \varphi(x)g(z, x-i0) + \frac{1}{\sqrt{2\pi}} \, \qquad \text{for all $x\in\RR_+$}
+\end{align}
+where, for any $x \in \RR_+$, 
+\begin{align*}
+    g(z, x+i0) &= \lim_{\varepsilon\to 0^+}  g(z, xe^{i\varepsilon}),\\
+    g(z, x-i0) &= \lim_{\varepsilon\to 0^+}  g(z, xe^{i(2\pi\varepsilon)}),\\
+    \varphi(x) &= \lim_{\varepsilon\to 0^+}\tilde \varphi(xe^{i\varepsilon})
+\end{align*}
+
+\begin{proof}
+\textcolor{red}{Assume that we know that $\varphi$ does not vanish. (To be prove) (it will add assumptions on the kernel ?)}. We can define the function $k(z) = \ln\left(\frac{\varphi(z)}{z}\right)$ on a neighborhood of $\RR_+$.
+Let us denote:
+    \begin{align*}
+        H(p,\zeta) = \frac{1}{2\pi i }\int_0^\infty \ln\left(\frac{z}{\varphi(\lambda)}\right) \frac{\diff \lambda}{\lambda - \zeta}
+    \end{align*}
+
+The formules of Plemej Sojoltski (\textcolor{red}{Is there any hypothesis except that the integral is well-defined ?}) ensure that 
+    \begin{align*}
+        H(z,x+i0) &= \frac{1}{2} \ln\left(\frac{z}{\varphi(x)}\right) + \frac{1}{2\pi i} PV\int_0^\infty \ln\left(\frac{z}{\varphi(\lambda)}{z}\right) \frac{\diff \lambda}{\lambda - \zeta} \\
+        H(z,x-i0) &= -\frac{1}{2} \ln\left(\frac{z}{\varphi(x)}\right) + \frac{1}{2\pi i} PV\int_0^\infty \ln\left(\frac{z}{\varphi(\lambda)}\right) \frac{\diff \lambda}{\lambda - \zeta}
+    \end{align*}
+By substracting these expressions, we obtain:
+\begin{align*}
+    \frac{z}{\varphi(x)}
+    = \frac{e^{H(z,x+i0)}}{e^{H(z,x-i0)}} 
+    = \frac{M(z,x+i0)}{M(z,x-i0)}.
+\end{align*}
+By using Equation\eqref{eq:WH3.5}, it follows that 
+\begin{align*}
+    \frac{z}{\varphi(x)} g(z, x+i0) = g(z, x-i0) + \frac{1}{\sqrt{2\pi}  \varphi(x)} \, \qquad \text{for all $x\in\RR_+$}
+\end{align*}
+and 
+\begin{align*}
+    \frac{M(z,x+i0)}{M(z,x-i0)} g(z, x+i0) = g(z, x-i0) + \frac{1}{\sqrt{2\pi}  \varphi(x)} \, \qquad \text{for all $x\in\RR_+$}.
+\end{align*}
+Then 
+\begin{align*}
+    M(z,x+i0)g(z, x+i0) = M(z,x-i0)g(z, x-i0) + \frac{M(z,x-i0)}{\sqrt{2\pi}  \varphi(x)} \, \qquad \text{for all $x\in\RR_+$}.
+\end{align*}
+
+Define
+\begin{align*}
+    W(z, \zeta) = \frac{1}{2\pi i}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)}\left( \frac{1}{\lambda-\zeta}\right) \diff \lambda 
+\end{align*}
+The Plemej Sojoltski formula ensures \textcolor{red}{(if well define, and true ?)} that 
+\begin{align*}
+    \frac{M(z,x-i0)}{\varphi(x)}
+    = 
+    W(z,x+i0) - W(z,x-i0)
+    \mtext{for any}
+    x > 0
+    \eqfinp
+\end{align*}
+Therefore, 
+\begin{align*}
+    M(z,x+i0)g(z, x+i0) -\frac{W(z,x+i0)}{\sqrt{2\pi}} = M(z,x-i0)g(z, x-i0) - \frac{W(z,x-i0)}{\sqrt{2\pi}} \, \qquad \text{for all $x\in\RR_+$}.
+\end{align*}
+It follows that the function $C(z,\cdot)$ defined by 
+$$ C(z,\cdot) := M(z,\cdot)g(z,\cdot) - \frac{W(z,\cdot)}{\sqrt{2\pi}}$$
+is analytic in $\CC \setminus \{0\}$.\\
+
+By the Liouville's theorem \textcolor{red}{to be proved}
+\begin{align*}
+    \forall z \in \CC \setminus \RR_-
+    \eqsepv
+    C(z,\zeta) = C(z)
+\end{align*}
+Then 
+\begin{align}
+    g(z,\zeta) = \frac{\sqrt{2\pi}C(z)+W(z,\zeta)}{\sqrt{2\pi}M(z,\zeta)}
+\end{align}
+However, we know that \textcolor{red}{to be proved from C3}
+\begin{align}
+C(z) = -\frac{1}{\sqrt{2\pi}}\lim_{\zeta \to 0}W(z,\zeta)
+\end{align}
+Then 
+\begin{align*}
+    \sqrt{2\pi}C(z) + W(z,\zeta)
+    &= 
+    \frac{1}{2\pi i}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)}\left( \frac{1}{\lambda-\zeta}-\frac{1}{\lambda}\right) \diff \lambda \\
+    &= 
+    \frac{\zeta}{2\pi i}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)} \frac{1}{\lambda(\lambda-\zeta)} \diff \lambda \\
+\end{align*}
+It follows that 
+\begin{align*}
+    g(z,\zeta) 
+    &= 
+    \frac{\zeta}{i(2\pi)^{3/2}}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)M(z,\zeta)} \frac{\diff \lambda}{\lambda(\lambda-\zeta)} \\
+\end{align*}
+\end{proof}
+
+\subsection{The solution of the Equation}
+By reverting the change of variables, we have that 
+\begin{align}
+    L(s,p) = g(p, T(s)) 
+    \eqfinp
+\end{align}
+We define $m(p,s) = M(p, T(s))$. Then
+
+\begin{align*}
+    L(s,z) &= g(z,T(s)) \\ 
+    &= 
+    \frac{T(s)}{i(2\pi)^{3/2}}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)M(z,s)} \frac{\diff \lambda}{\lambda(\lambda-T(s))} \\
+    &= 
+    \frac{T(s)}{i(2\pi)^{3/2}}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)M(z,s)} \frac{\diff \lambda}{\lambda\Big(\frac{\lambda}{T(s)}-1\Big)} \\
+    &= 
+    \frac{1}{i(2\pi)^{3/2}}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)M(z,s)} \frac{\diff \lambda}{\lambda\Big(\frac{\lambda}{T(s)}-1\Big)} \\
+    &= 
+    \frac{1}{i(2\pi)^{3/2}}\int_0^\infty  \frac{M(z,\lambda-i0)}{\varphi(\lambda)M(z,s)} \frac{\diff \lambda}{\lambda\Big(\frac{\lambda}{e^{2i\pi(s-s_0)}}-1\Big)} \\
+\end{align*}
+The change of variable $\lambda = e^{2i\pi(y-s_0)}$ gives
+\begin{align*}
+    L(s,z)
+    &= 
+    \frac{2i\pi}{i(2\pi)^{3/2}}\int_{\Re(y)=s_0}  \frac{m(z,y-i0)}{\varphi(e^{2i\pi(y-s_0)})m(z,s)} \frac{\diff y}{(e^{2i\pi(y-s)}-1)} \\
+    &= 
+    \frac{1}{\sqrt{2\pi}}\int_{\Re(y)=s_0} \frac{1}{\varphi(e^{2i\pi(y-s_0)})}  \frac{m(z,y-i0)}{m(z,s)} \frac{\diff y}{(e^{2i\pi(y-s)}-1)} \\
+\end{align*}
+where 
+$$m(z,s) = M(z, T(s))$$
+
+\bibliographystyle{plain}
+\bibliography{oneforall}
+
+\end{document}

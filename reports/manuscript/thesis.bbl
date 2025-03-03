@@ -130,6 +130,76 @@
       \range{pages}{17}
       \keyw{ref}
     \endentry
+    \entry{buchmann2004decompounding}{article}{}
+      \name{author}{2}{}{%
+        {{hash=bcd00328a559ce527c0ed35df076c051}{%
+           family={Buchmann},
+           familyi={B\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod}}}%
+        {{hash=dd807b4c348ea76feaa070c8002b67fd}{%
+           family={Gr{ü}bel},
+           familyi={G\bibinitperiod},
+           given={Rudolf},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d54751adb8964548012886fe6097ed02}
+      \strng{fullhash}{d54751adb8964548012886fe6097ed02}
+      \strng{bibnamehash}{d54751adb8964548012886fe6097ed02}
+      \strng{authorbibnamehash}{d54751adb8964548012886fe6097ed02}
+      \strng{authornamehash}{d54751adb8964548012886fe6097ed02}
+      \strng{authorfullhash}{d54751adb8964548012886fe6097ed02}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of the Institute of Statistical Mathematics}
+      \field{number}{4}
+      \field{title}{Decompounding Poisson random sums: recursively truncated estimates in the discrete case}
+      \field{volume}{56}
+      \field{year}{2004}
+      \field{pages}{743}
+      \range{pages}{1}
+    \endentry
+    \entry{buchmann2003decompounding}{article}{}
+      \name{author}{2}{}{%
+        {{hash=bcd00328a559ce527c0ed35df076c051}{%
+           family={Buchmann},
+           familyi={B\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod}}}%
+        {{hash=dd807b4c348ea76feaa070c8002b67fd}{%
+           family={Gr{ü}bel},
+           familyi={G\bibinitperiod},
+           given={Rudolf},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{d54751adb8964548012886fe6097ed02}
+      \strng{fullhash}{d54751adb8964548012886fe6097ed02}
+      \strng{bibnamehash}{d54751adb8964548012886fe6097ed02}
+      \strng{authorbibnamehash}{d54751adb8964548012886fe6097ed02}
+      \strng{authornamehash}{d54751adb8964548012886fe6097ed02}
+      \strng{authorfullhash}{d54751adb8964548012886fe6097ed02}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The annals of statistics}
+      \field{number}{4}
+      \field{title}{Decompounding: an estimation problem for Poisson random sums}
+      \field{volume}{31}
+      \field{year}{2003}
+      \field{pages}{1054\bibrangedash 1074}
+      \range{pages}{21}
+    \endentry
     \entry{darwin1859origin}{book}{}
       \name{author}{1}{}{%
         {{hash=d0e4f38206db228a7b870a49f6f52db2}{%
@@ -150,6 +220,41 @@
       \field{labeltitlesource}{title}
       \field{title}{On the origin of species}
       \field{year}{1859}
+    \endentry
+    \entry{duval2019adaptive}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6012057ea1cc583926861bdfd1fcb720}{%
+           family={Duval},
+           familyi={D\bibinitperiod},
+           given={C{é}line},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a2957e89b34f5d616929188f4d90e244}{%
+           family={Kappus},
+           familyi={K\bibinitperiod},
+           given={Johanna},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {The Institute of Mathematical Statistics}%
+        {the Bernoulli Society}%
+      }
+      \strng{namehash}{c177484f952e69b7a642cd7b4bcfeb96}
+      \strng{fullhash}{c177484f952e69b7a642cd7b4bcfeb96}
+      \strng{bibnamehash}{c177484f952e69b7a642cd7b4bcfeb96}
+      \strng{authorbibnamehash}{c177484f952e69b7a642cd7b4bcfeb96}
+      \strng{authornamehash}{c177484f952e69b7a642cd7b4bcfeb96}
+      \strng{authorfullhash}{c177484f952e69b7a642cd7b4bcfeb96}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Electronic Journal of Statistics}
+      \field{number}{2}
+      \field{title}{Adaptive procedure for Fourier estimators : application to deconvolution and decompounding}
+      \field{volume}{13}
+      \field{year}{2019}
+      \field{pages}{3424\bibrangedash 3452}
+      \range{pages}{29}
     \endentry
     \entry{eyre2007distribution}{article}{}
       \name{author}{2}{}{%
@@ -263,6 +368,35 @@
       \field{year}{2006}
       \field{pages}{302\bibrangedash 323}
       \range{pages}{22}
+    \endentry
+    \entry{johannes2009deconvolution}{article}{}
+      \name{author}{1}{}{%
+        {{hash=55b7001e3e9f2b61c2ac83414e40a0d5}{%
+           family={Johannes},
+           familyi={J\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{55b7001e3e9f2b61c2ac83414e40a0d5}
+      \strng{fullhash}{55b7001e3e9f2b61c2ac83414e40a0d5}
+      \strng{bibnamehash}{55b7001e3e9f2b61c2ac83414e40a0d5}
+      \strng{authorbibnamehash}{55b7001e3e9f2b61c2ac83414e40a0d5}
+      \strng{authornamehash}{55b7001e3e9f2b61c2ac83414e40a0d5}
+      \strng{authorfullhash}{55b7001e3e9f2b61c2ac83414e40a0d5}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{number}{5A}
+      \field{title}{Deconvolution with unknown error distribution}
+      \field{volume}{37}
+      \field{year}{2009}
+      \field{pages}{2301\bibrangedash 2323}
+      \range{pages}{23}
     \endentry
     \entry{katju2019old}{article}{}
       \name{author}{2}{}{%
@@ -883,7 +1017,99 @@
       \field{pages}{165\bibrangedash 170}
       \range{pages}{6}
     \endentry
+    \entry{wang2010robust}{article}{}
+      \name{author}{7}{}{%
+        {{hash=2053a78b8c7e674d28eabbe236f2f077}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Ping},
+           giveni={P\bibinitperiod}}}%
+        {{hash=9c4ffa1ea82d2a1e3a77dc4a1a651873}{%
+           family={Robert},
+           familyi={R\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+        {{hash=42e020803aabeae4af77b79d3871d87d}{%
+           family={Pelletier},
+           familyi={P\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b1d37bc050af2f0a45a75f69c3a73d04}{%
+           family={Dang},
+           familyi={D\bibinitperiod},
+           given={Wei\bibnamedelima Lien},
+           giveni={W\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=2f7715b3445531852d2da729b288b006}{%
+           family={Taddei},
+           familyi={T\bibinitperiod},
+           given={Francois},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b0d9a37f2e0d2c0de3151b5efac260b1}{%
+           family={Wright},
+           familyi={W\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9e555608d43a90e3b0eb6c0ab18d2e2a}{%
+           family={Jun},
+           familyi={J\bibinitperiod},
+           given={Suckjoon},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8190c0970e042df07820c6d43fa5229c}
+      \strng{fullhash}{df546c984d3f5db4c160ec3789ce21de}
+      \strng{bibnamehash}{8190c0970e042df07820c6d43fa5229c}
+      \strng{authorbibnamehash}{8190c0970e042df07820c6d43fa5229c}
+      \strng{authornamehash}{8190c0970e042df07820c6d43fa5229c}
+      \strng{authorfullhash}{df546c984d3f5db4c160ec3789ce21de}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Current biology}
+      \field{number}{12}
+      \field{title}{Robust growth of Escherichia coli}
+      \field{volume}{20}
+      \field{year}{2010}
+      \field{pages}{1099\bibrangedash 1103}
+      \range{pages}{5}
+    \endentry
   \enddatalist
+  \missing{applebaum2009levy}
+  \missing{averbuch2009spline}
+  \missing{babai2011analysis}
+  \missing{bogsted2010decompounding}
+  \missing{carroll1988optimal}
+  \missing{coca2018efficient}
+  \missing{comte2006penalized}
+  \missing{comte2007finite}
+  \missing{comte2011data}
+  \missing{devroye1989consistent}
+  \missing{duval2013density}
+  \missing{embrechts2013modelling}
+  \missing{gomez2016retrial}
+  \missing{griffiths1977adaptive}
+  \missing{johnstone2004wavelet}
+  \missing{kundur1996blind}
+  \missing{liu2009deconvolution}
+  \missing{miguel2021spectral}
+  \missing{miguel2023multiplicative}
+  \missing{neumann1997effect}
+  \missing{nickl2012donsker}
+  \missing{pantin2017deconvolution}
+  \missing{ralston2005deconvolution}
+  \missing{reiss2013testing}
+  \missing{sacchi1997reweighting}
+  \missing{starck2002deconvolution}
+  \missing{starck2003wavelets}
+  \missing{stefanski1990deconvolving}
+  \missing{swedlow2007quantitative}
+  \missing{ulrych1971application}
+  \missing{van2004asymptotic}
+  \missing{vardi1989multiplicative}
+  \missing{vardi1992large}
 \endrefsection
 \endinput
 

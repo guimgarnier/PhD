@@ -1,0 +1,83 @@
+
+\subsection{Idée 1}
+
+Suivant la stratégie développée par C.Duval \cite[Théorème 2.2]{duval2013density}, nous allons chercher à établir une inégalité minimax pour la super--expérience $\Tilde Z$ pour lequel nous observons les trajectoires de manière continue, \ie que nous supposons que l'on a observé les différents temps de sauts jusqu'au instant $t_1$ et $t_2$.  \\
+L'idée principale, consiste à dire que si nous sommes capable d'obtenir une borne inférieure pour la super--expérience, alors une borne inférieure sur le vrai processus $Z$ ne peut qu'être supérieure. \\
+
+Soient $\PP_{T,0}$ la loi de $\Tilde Z$ et $\PP_{T,t_1, t_2}$ la loi des observations $Z = (Z_{t_1}^j, Z_{t_2}^j)_{j = 1\cdots J}$. 
+
+\begin{align*}
+    \inf_{\hat f} \sup_{f \in \Fcal}  \Big( \EE_{\PP_{T,t_1, t_2}} \Big[  \| \hat f - f \|_p^p  \Big] \Big)^{1/p}
+    \geq 
+    \inf_{\tilde f} \sup_{f \in \Fcal}  \Big( \EE_{\PP_{T,0}} \Big[  \| \tilde f - f \|_p^p  \Big] \Big)^{1/p}    
+    \eqfinp
+\end{align*}
+
+\subsubsection{Borne inférieure pour la super expérience}
+
+Donnons nous une mesure sigma-finie sur $\Fcal$.  Alors
+\begin{align*}
+    \sup_{f \in \Fcal}  \EE_{\PP_{T,0}} \Big[  \| \tilde f - f \|_p^p  \Big| N_{t_1} = k_1; N_{t_2} = k_2 \Big]  
+    &\geq
+   \int_{\Fcal}  \EE_{\PP_{T,0}} \Big[  \| \tilde f - f \|_p^p  \Big| N_{t_1} = k_1; N_{t_2} = k_2 \Big]  \diff \mu(f)
+\end{align*}
+
+Mais, par Fubini
+\begin{align*}
+   \sum_{k_1 = 0}^{+\infty} \sum_{k_2 = 0}^{+\infty}
+   \nu(k_1, k_2) \int_{\Fcal}  \EE_{\PP_{T,0}} \Big[  \| \tilde f - f \|_p^p  \Big| N_{t_1} = k_1; N_{t_2} = k_2 \Big]  \diff \mu(f)
+   =
+   \int_{\Fcal}  \EE_{\PP_{T,0}} \Big[  \| \tilde f - f \|_p^p \Big]  \diff \mu(f) 
+\end{align*}
+
+\begin{question} Dans la thèse de Duval, 
+\cite{duval2013density}, elle établit la borne inférieure sur son processus en utilisant un résultat de Donoho et al. \cite[Théorème 2]{donoho1996density}. Le point important de ce résultat c'est qu'on regarde des réalisations indépendantes d'un processus, identiquement distribuées. 
+    \begin{itemize}
+        \item Le truc, c'est que dans mon cas je regarde le processus en deux instants $t_1$ et $t_2$. J'ai donc une série d'observations $Z_{t_1}^j = \sum\limits_{k = 0}^{N_{t_1}^j} X_k^j + \varepsilon_{t_1}^j$ et $Z_{t_2}^j =  \sum\limits_{k = 0}^{N_{t_2}^j} X_k^j + \varepsilon_{t_2}^j$ 
+        Pour avoir des observations indépendantes, je peux considérer que j'ai les observations 
+        $(Z_{t_1}^j)_j$ et $(Z_{t_2}^j - Z_{t_1}^j)_j$ qui ne sont pas \iid. \\
+
+        Dans le cas de Duval \cite{duval2013density}, c'est plus simple, car il n'y a pas de temps différents. Les incréments sont donc bien \iid. 
+    \end{itemize}
+\end{question}
+
+
+\subsection{Preuve minimax : cas bizzare}
+
+
+To control the integral, we must control $|e^{\lambda t_1 \varphi_1(x)} - e^{\lambda t_1 \varphi_0(x)}|$
+. For that, we must control to part : 
+\begin{itemize}
+    \item If $|x| \to +\infty$. In that case, we know that $f_j$ and $f_0$ behaves as $x^{-2k}$.
+    A asymptotic expansion ensures that
+    \begin{align*}
+        |e^{\lambda t_1 f_1(x)} - e^{\lambda t_1 f_0(x)}|
+        = |
+        \lambda t_1| \cdot |f_1(x) - f_0(x)| = O \Big(\frac{1}{x^{2k}} \Big). 
+    \end{align*}
+    \item If $|x| \to 0$. A characteristic function is always bounded by 1. It follows that 
+    \begin{align*} 
+    \big(\varphi_{1, Z_{t_1}}(x) - \varphi_{0, Z_{t_1}}(x)\big)^2
+    \leq 4. \\
+    \end{align*}
+    \end{itemize}
+
+$\blacktriangleright$ It remains to control the term
+    \begin{align*}
+     \int_{-\infty}^{+\infty} 
+     \big(\varphi_{1, Z_{t_1}}(x)^{'k} - \varphi_{0, Z_{t_1}}(x)^{'k}\big)^2 \diff x 
+     \eqfinp
+    \end{align*}
+    \begin{itemize}
+        \item If $|x| \to +\infty$, the previous method allows us to obtain a bound of the form $O \big( \frac1{x^p}\big)$ where $p$ only depend on the regularity of $\varphi_\varepsilon$ et de $k$. 
+        \item If $|x| \to 0$. Here, we can't use the fact that a characteristic function is bounded by $1$ because we have no information on the derivative of $\varphi_{1, Z_{t_1}}$. \\
+        However, if $k = 1$. We have
+            \begin{align*}
+            \varphi'_{1, Z_{t_1}}(x)
+            &=
+            \lambda t_1 f_0'(x) \varphi_{1, Z_{t_1}}(x) + e^{-\lambda t_1 + \lambda t_1 f_0(x)} \varphi_\varepsilon'(x) \\
+            &\leq 
+            \lambda t_1 f_0'(x) + \varphi_\varepsilon'(x)
+            \end{align*}
+        Then, we need to add more assumption on $f_0$ and $\varphi_\varepsilon$ to be able to control our term. 
+        \end{itemize}

@@ -1,0 +1,381 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{xcolor}
+
+\usepackage[colorlinks,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{cleveref}
+\usepackage[notcite, notref]{showkeys} % show the labels on PDF (to be removed at release)
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{EDP Mutation}
+\author{Marie Doumic, Guillaume Garnier}
+\date{\today}
+\newcommand{\p}{\partial}
+\newcommand{\diff}{\,\mathrm{d}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+
+\newcommand{\mellin}{\mathcal{M}}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\maketitle
+
+\section{Introduction \& state of the art}
+
+\subsection{Our model}
+
+\subsection{The different models}
+
+\subsubsection{Coville, Dupaigne, 2007, Article~\cite{coville2007non}}
+\noindent\textbf{Model:} 
+$u$= "gene fraction of the mutant" . From Fisher
+\[u_t-\Delta u=u(1-u)
+\]
+derives the nonlocal version with convolution kernel $J$:
+\[u_t- (J*u-u)=f(u)\]
+assumes symetric $J$: $J(x)=J(-x)$.  Be careful: their variable $x$
+is a spatial variable and not at all a trait which is mutating ! \\
+
+\noindent\textbf{Link with our model:} 
+\begin{itemize}
+    \item In our model, there is no reason for $J$ symetric. \\
+    \qquad \textit{ ex. If there is only deleterious mutations, then $Supp(J)\subset (-\infty, 0)$}\\
+    However the symetry of $J$ is maybe not important in their proof?
+    \item For us $f=0$ whereas for them they take $Supp(f)=(0,1)$ and $f>0$ on $(0,1):$ monostable case.
+    \item If there is competition it should be nonlocal, of type $$u(1-\int w(x)u(x)dx)$$ with $w$ a weight function - the simplest being $w(x)=1$.
+\end{itemize}
+
+\noindent\textbf{Goal:} 
+\begin{itemize}
+    \item They look for traveling wave solutions of type $u(x,t)=U(x+ct)$ which, in the monostable case, progressively invade all the space.
+    \item They link their model to the  mutation-selection model of~\cite{fourniermeleard}, which they write as being
+    \[\p_t u=J*u-u +(1-K*u)u \]
+    and this is much more coherent for us: the competition should occur with the whole population.
+    \item They obtain $L^2$ estimates on the solution.
+\end{itemize}
+
+\noindent\textbf{Possible questions:} 
+\begin{itemize}
+    \item Does there exist travelling wave solutions ? Does it have a meaning if $f=0$ ? 
+    \item In such a case did someone answer to the question: How 0 is reached ?
+\end{itemize}
+
+\subsubsection{Burger, Bomze 1996 : Article~\cite{burger1996stationary}}
+\noindent\textbf{Model:} 
+In~\cite{burger1996stationary} the equation (1.3) represent mutation equation
+\begin{align*}
+    \dot P_t(Y) = \int_Y \left( \int_X u(y,x)P_t(\diff x)\right)\lambda(\diff y) - \int_Y \mu(y) P_t(\diff y)
+\end{align*}
+
+the equation (1.4) represent mutation-selection equation
+\begin{align*}
+    \dot P_t(Y) = \int_Y w(y)P_t(\diff y) - P_t(Y)\int_X w(x) P_t(\diff x) + \int_Y \left( \int_X u(y,x)P_t(\diff x)\right)\lambda(\diff y) - \int_Y \mu(y) P_t(\diff y)
+\end{align*}
+
+They assume that $w$ is bounded from above
+$$ w(x) \leq 0$$
+
+\noindent\textbf{Link with our model:} 
+Papier par Burger et Bomze: notre equation est un cas particulier de leur equation 1.5.
+\begin{itemize}
+    \item seems exactly the same as ours (slightly more general since not only a convolution and allows non-poissonian mutation rate $\lambda(x)$) and it adds it to a selection process to obtain (1.5).
+    \item (Question) In our case, $w$ is not bounded from above ?
+\end{itemize}
+\red{Big bibliography}.\\
+
+\noindent\textbf{Obtention of the Equation (1.5) of Burger and Bomze:} \\Consider the equation
+\begin{align*}
+    \p_t u = xu(t,x) - \lambda u(t,x)+ \lambda \int_\RR u(t,y)\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}, \qquad t \in \RR_+ \,, x \in \RR
+\end{align*}
+For any $(t, x) \in \RR_+ \times \RR$, we define $p(t,x) = \frac{u(t,x)}{\int_\RR u(t,y)\diff y}$. 
+We have (justify the interversion of $\int$ and $\p$
+\begin{align*}
+    \p_t p(t, x) 
+    &= \frac{\p_tu(t,x) \cdot \int_\RR u(t,y)\diff y - u(t,x) \int_\RR \p_t u(t,y)\diff y}{\left( \int_\RR u(t,y)\diff y \right)^2} \\
+    &= \frac{\left[ xu - \lambda u + \lambda \int_\RR u\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}\right] \cdot \int_\RR u\diff y - u\int_\RR \left[ yu - \lambda u + \lambda \int_\RR u(t,s)\kappa\left(\frac{y}{s}\right) \frac{\diff s}{s}\right]\diff y}{\left( \int_\RR u(t,y)\diff y \right)^2} \\
+    &= xp - \lambda p + \lambda \int_\RR p\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}
+    -  p\int_\RR \left[ yp - \lambda p + \lambda \int_\RR p(t,s)\kappa\left(\frac{y}{s}\right) \frac{\diff s}{s}\right]\diff y
+\end{align*}
+Since, $\int_\RR p \diff y = 1$, 
+\begin{equation}\label{eq:BurgerBomze}\begin{array}{ll}
+    \p_t p(t, x) 
+    &= xp - \lambda p + \lambda \int_\RR p\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}
+    -  p\int_\RR yp \diff y + \lambda p - \lambda \int_\RR \int_\RR p(t,s)\kappa\left(\frac{y}{s}\right) \frac{\diff s}{s}\diff y\\
+    &= xp 
+    + \lambda \int_\RR p\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}
+    - p\int_\RR yp \diff y 
+    - \lambda p \int_\RR \int_\RR p(t,s)\kappa\left(\frac{y}{s}\right) \frac{\diff s}{s}\diff y\\
+    &= xp 
+    + \lambda \int_\RR p\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}
+    - p\int_\RR yp \diff y 
+    - \lambda p\end{array}
+\end{equation}
+Where the last equality is obtained because 
+$$\int_\RR \int_\RR p(t,s)\kappa\left(\frac{y}{s}\right) \frac{\diff s}{s}\diff y = \int_\RR \int_\RR p(t,s)\kappa\left(\frac{y}{s}\right) \diff y \frac{\diff s}{s} = \int_\RR \int_\RR p(t,s)s\kappa\left(y\right) \diff y \frac{\diff s}{s} = 1.$$
+(Fubini is ok because all quantities are positive). So we have~\eqref{eq:BurgerBomze}
+is equation (1.5) of Burger and Bomze but for a variable $x=exp(z)$ so that with Burger-Bomze notations we would have $w(y)=exp(y)$.\\
+
+\noindent\textbf{Results:} 
+\begin{itemize}
+    \item Existence and uniqueness of the solutions of the initial value problem
+    \item Characterization of the structure of stationary distributions
+    \item Existence and uniqueness of stationary distributions under mild conditions
+\end{itemize}
+
+\subsubsection{Bürger 1989, Unbounded One-Parameter Semigroups}
+\noindent\textbf{Model:} 
+Mutation and selection. The \textbf{selection is against all the individuals}. In the paper, $m(x)$ represents the fitness of individual with trait $x$. In our model, $m(x) = e^x$. I didn't see hypothesis on the mutation kernel $u$, except mutations that come from a convolution operator. 
+
+The paper present the Cauchy problem
+\begin{equation*}
+    \left\{
+        \begin{aligned}
+            \partial_t \varphi(x,t) & = \varphi(x,t)\big(m(x)-\bar m(x)\big) + 
+    \int u(x,y) \varphi(y,t)\diff y - \mu_1(x)\varphi(x,t) \\
+    \varphi(x,0) & = \varphi_0(x)\\
+        \end{aligned}
+    \right.
+\end{equation*}
+
+
+They assume that $m$ satisfies :
+\begin{enumerate}
+    \item (m1) : $m$ is real-valued and $m \in L^1_{loc}(M, \nu)$ (ok for us)
+    \item (m2) : $\text{ess sup}_{x \in M} m(x) = +\infty$ (ok for us)
+    \item (m3) : $m_{-}$ is bounded on compact set (ok for us)
+    \item \red{(m4) : $e^m$ is submultiplicative (not ok for us. In the multiplicative case, we have $m(z) = e^{z}$). Definition of submultiplicative: there exists a constant $C$ such that
+    \[ 
+    e^{m_+(x+y)}\leq C e^{m_+(x)}e^{m_+(y)}\]}
+\end{enumerate}\vspace{1em}
+
+
+\noindent\textbf{Link with our model:} 
+The problem is the assumptions on their $u(x,y),$ for us it is $\kappa(\f{x}{y})\f{1}{y},$ given on their p. 86: they want $u$ either depending only on $x$ or being a convolution kernel. This is not the case for us. If we do a change of  variable $x=\exp(z)$ then our multiplicative convolution kernel becomes a convolution kernel, but then we have $m(x)=e^z$ which is no more submultiplicative. \\
+
+
+\noindent\textbf{Methods:} The article use an approach with semi-group that the authors have used in an other paper. \\
+
+\noindent\textbf{Result:} 
+\begin{itemize}
+    \item They proved there exist a unique solution, that depends continuously on the initial data.
+    \item p.78 : They present an other work where $m = sx$ and said that no stationary solution can be found. 
+\end{itemize}  
+
+
+
+\paragraph{Possible questions}
+\begin{itemize}
+    \item Does there exist travelling wave solutions ?
+\end{itemize}
+
+\subsubsection{Eshel 1972, Evolution processes with continuity of types}: Study the long range evolutionary traits in a population with an infinie numpber of types. Goal : Asymptotic behaviour. 
+
+At each step : A offspring may born from its parent, and mutate. 
+
+Here, the authors assume that each mutations are equi-distributed around the parental type (Equation 2.4). It's not the case with our kernel. Futhermore, the authors assume that time is discrete. Here again, it's not the case with our model. \\
+
+\subsubsection{Karlin 1988, Non-Gaussian phenotypic models of quantitative}
+Impossible to find this article. \\
+
+\subsubsection{Article~\cite{cloez2022fast}}
+
+The authors study a "particular case of Kimura's replicator-mutator model" called "house of cards model of mutations": the mutation does not depend on the original trait, hence $J*u$ is replaced by $Q(x) \int u(t,y)dy.$ For us on the contrary it depends in a "self-similar" way of the original trait so that we have $J*u$ simplifying the full model which would be $J(x,\cdot) *y$.
+
+\section{Discussion}
+
+New articles given by Pierre Gabriel: Gil Hamel Roques Martin. To see together. Here also there is a selection term and it seems unavoidable. \\
+
+\textbf{Question: is it interesting to study the model without selection ?} Biological justification for it ? Has it been studied in the previous literature as an intermediate step ? \\
+
+\textbf{For us it seems that the "most-adapted trait" [name to check] is $+\infty$} since the higher the growth rate the higher the fitness: $\tau=\lambda$ [$\tau$ growth rate and $\lambda$ Malthus parameter]. In reality certainly not. Especially the fastest growth= the more mutation and especially the more deleterious mutations.\\
+
+\textbf{mutations not poissonian:} increase with growth rate - HOW ? linear dependency easy to justify biologically
+
++ mutation kernel as in the simplest case
+
+
+\section{Pistes/directions de recherche}
+
+
+Avant de regarder l'equation avec taux de croissance en $x$ pour la population on peut regarder l'equation en lignee ou il n'y a pas de croissance de la pop:
+\begin{align}
+    \p_t v =  - \lambda v(t,x)+ \lambda \int_\RR v(t,y)\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}, \qquad t \in \RR_+ \,, x \in \RR
+    \label{eq:mod_simple}
+\end{align}
+
+Cas le plus simple deja ecrit: bien comprendre tout. Au moins grandes idees.\\
+
+\noindent\textbf{Question:} Comment resoudre le prob pour trouver un equilibre en pop ? Selon Lydia, plus le taux d'elongation est grand et plus les mutations s'accumulent. Or elles sont majoritairement deleteres donc cela pourrait creer un equilibre ?
+
+\begin{itemize}
+    \item Garder une croissance proportionnelle a $x$ car c'est ce qui correspond a Lydia = taux de croissance. Avec cette contrainte, voir a quel point cela sort du champ deja etudie - il semble que les hypotheses ne sont pas les memes.
+    \item La question est alors: est-ce qu'on peut modifier le taux de mutation, autant le taux total que le noyau de mutation, en autorisant aussi des noyaux non auto-similaires, de facon a avoir convergence vers un etat stationnaire (ce qui est plus realiste)? En theorie: plus on grossit vite et plus on mute, mais on peut imaginer en revanche que les mutations deleteres soient avantagees. Donc 2e modele le + simple serait $\lambda$ proportionnel a x et noyau de mutation ad hoc.
+\end{itemize}
+
+\section{First results}
+
+\begin{proposition}
+    Let $u_s \in H^1(\RR)$ be a stationnary distribution of Equation~\ref{eq:mod_simple}. If $\mellin [u_s](z) \neq 0$ for all $z\in\CC$, then $\kappa = \delta_1$.
+\end{proposition}
+\begin{proof}
+    Let assume that $u_s$ is a stationnary distribution. Then 
+    \begin{align}
+        u_s(x) = \int_\RR u_s(y)\kappa\left(\frac{x}{y}\right) \frac{\diff y}{y}, \qquad x \in \RR
+    \end{align}
+By applying the Mellin transform 
+\begin{align}
+    \mellin [u_s](z) = \mellin [u_s](z) \cdot \mellin [\kappa](z)
+\end{align}
+It follows that $ \mellin [\kappa](z) = 1$ for any $z \in \CC$. 
+Then $\kappa = \delta_1$.
+\end{proof}
+
+
+\section{Quelques essais}
+
+\subsection{Terme de croissance et solution stationnaire ?}
+
+Consider the equation
+\begin{align*}
+    \partial_t u(t,x) = -\lambda u(t,x) + \int_0^\infty \kappa\Big(\frac{x}{y}\Big)u(t,y)\frac{\diff y}{y} + cxu(t,x).
+\end{align*}
+
+If $u_s$ is a stationnary solution (To renormalize with the $e^{\alpha t}$ growth), then
+\begin{align*}
+    \lambda u_s(x) = \lambda\int_0^\infty \kappa\Big(\frac{x}{y}\Big)u_s(y)\frac{\diff y}{y} + cxu_s(x).
+\end{align*} 
+
+By applying the Mellin transform, we have that
+\begin{align*}
+    \lambda \mathcal{M}_u(s) =\lambda \mathcal{M}_k(s)\mathcal{M}_u(s) + c\mathcal{M}_u(s+1).
+\end{align*}
+It follows that 
+\begin{align*}
+    \mathcal{M}_u(s+1) = \frac{\lambda}{c}(1 - \mathcal{M}_k(s))\mathcal{M}_u(s)
+\end{align*}
+
+By induction, for any $n\in \mathbb{N}$
+\begin{align*}
+    \mathcal{M}_u(n) = \Big(\frac{\lambda}{c}\Big)^n \mathcal{M}_u(0) \prod_{i = 0}^{n-1}(1 - \mathcal{M}_k(i))
+\end{align*}
+
+In fact, 
+By induction, for any $s\in [n, n+1[$
+\begin{align*}
+    \mathcal{M}_u(s) = \Big(\frac{\lambda}{c}\Big)^n \mathcal{M}_u(s-n) \prod_{i = 0}^{n-1}(1 - \mathcal{M}_k(i))
+\end{align*}
+
+For any $s = a + ib$, $a \in [n, n+1[$
+\begin{align*}
+    \mathcal{M}_u(a+ib) = \Big(\frac{\lambda}{c}\Big)^n \mathcal{M}_u(a-n + ib) \prod_{j = 0}^{n-1}(1 - \mathcal{M}_k(j + ib))
+\end{align*} 
+
+It suffices to know $\mathcal{M}_u(a+ib)$ on the vertical strip 
+$$B = \{s \in \CC : 0 \leq \mathfrak{R}(s) < 1 \}.$$
+
+\subsection{No mutations}
+The equation becomes
+\begin{align*}
+    \partial_t u(t,x) = cxu(t,x).
+\end{align*}
+It's a first order ordinary differential equation in $t$ so 
+\begin{align*}
+    u(t,x) = u_0(x)e^{cxt}.
+\end{align*}
+
+\subsection{Only deleterious mutations}
+\begin{align*}
+    \partial_t u(t,x) = -\lambda u(t,x) + \lambda \int_x^\infty \kappa\Big(\frac{x}{y}\Big)u(t,y)\frac{\diff y}{y} + cxu(t,x).
+\end{align*} 
+We assume that $\text{supp}\,u_0 \subset (0, x_0]$\\
+
+\textbf{Question :} We probably have something like : $u(t,x) \to \delta_{x_0} \times \omega \times e^{cx_0t}$
+
+We consider two mutation kernel : 
+\begin{enumerate}
+    \item $\kappa$ is uniform on $[0,1]$.
+    \item $\kappa = \delta_{1-\varepsilon}$.
+\end{enumerate}
+
+\subsubsection{First case : $\kappa = \delta_{1-\varepsilon}$}
+
+In that case, the equation becomes 
+\begin{align*}
+    \partial_t u(t,x) = -\lambda u(t,x) + \lambda \int_x^\infty \delta_{1-\varepsilon}\Big(\frac{x}{y}\Big)u(t,y)\frac{\diff y}{y} + cxu(t,x).
+\end{align*} 
+
+\subsubsection{Second case : $\kappa$ is Uniform on $[0, 1]$}
+
+In that case, the equation becomes 
+\begin{align*}
+    \partial_t u(t,x)
+    &= -\lambda u(t,x) + \lambda \int_x^\infty u(t,y)\frac{\diff y}{y} + cxu(t,x) \\
+    &= -\lambda u(t,x) + \lambda \int_x^{x_0} u(t,y)\frac{\diff y}{y} + cxu(t,x)
+\end{align*} 
+
+
+\subsection{Deleterious and beneficial mutation ? }
+\begin{align*}
+    \partial_t u(t,x) = -\lambda u(t,x) + \lambda \int_0^\infty \kappa\Big(\frac{x}{y}\Big)u(t,y)\frac{\diff y}{y} + cxu(t,x).
+\end{align*} 
+
+\begin{itemize}
+    \item Support of mutation is bounded ? 
+\end{itemize}
+
+
+\section{A short resume of the article given by Gaël}
+
+Les articles de Matthieu Alfaro et Rémi Carles sur des populations structurées par un trait de fitness.
+\begin{itemize}
+    \item \textsc{REPLICATOR-MUTATOR EQUATIONS WITH QUADRATIC FITNESS}\\
+    In this article, the author modelise mutations by a diffusion. The model is 
+    \begin{align*}
+        \partial_t u = \sigma^2 \partial_{xx} u + \mu_0\big( f(x) - \int f u \diff x\big)u
+    \end{align*}
+    They obtained an explicit solution and showed some asymptotic result. 
+    \begin{enumerate}
+        \item  when the fitness is non-positive
+solutions converge to a universal stationary Gaussian
+\item when the fitness is non-negative solutions always become extinct in finite time.\\
+    \end{enumerate}
+    \item \textsc{Superexponential growth or decay in the heat equation with a logarithmic nonlinearity}\\
+        In this article, the author modelise mutations by a diffusion. The model is 
+    \begin{align*}
+        \partial_t u = \partial_{xx} u + \lambda u \ln (u^2)
+    \end{align*}
+    They establish the
+existence and uniqueness of solutions of the Cauchy problem and study some asymptotic behavior with respect to the initial data. \\
+\end{itemize}
+
+L'article de Jérôme Coville sur les solutions stationnaires avec masses de Dirac
+\begin{itemize}
+    \item CONCENTRATION PHENOMENON IN SOME NON-LOCAL EQUATION \\
+\begin{align*}
+    \partial_t u(t, x) = \left(a(x) - \int_{\Omega} k(x, y)u(t, y) dy\right ) u(t, x) + \int_{\Omega} m(x, y)[u(t, y) - u(t, x)] dy\quad \text{ for}\quad (t, x) \in \mathbb{R}_{+} \times \Omega,
+\end{align*}
+Study of the long time behavior. 
+\end{itemize}
+
+Un article où on regarde le comportement en temps long de solutions d'équations de mutation-sélection : 
+\begin{itemize}
+    \item \textsc{Asymptotic profile in selection-mutation equations: Gauss versus Cauchy distributions}
+    \textbf{Model : House of cards} : The
+main assumption here is that the law of the trait of a mutated offspring does not depend of the trait of its parent. It's different from our model here. 
+\end{itemize}
+
+
+ 
+\bibliographystyle{plain}       % (uses file "plain.bst")
+\bibliography{Tout_Marie}           % expects file "biblio.bib"
+
+\end{document}

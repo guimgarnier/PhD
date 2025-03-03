@@ -1,0 +1,268 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aquabox}[2021/04/26 v1.0 LaTeX package for my math works]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Extensions Requises
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Utilisation des structures logiques dans le templates
+\RequirePackage{ifthen}  %% Permet d'utiliser des Booléens
+
+%% Documents Mathématiques
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+
+\RequirePackage{babel}
+\RequirePackage[T1]{fontenc}
+
+\RequirePackage{dsfont} % Avoir le 1 de l'indicatrice
+%\setlength{\parindent}{0pt} % Suppression de l'indentation
+\RequirePackage{enumitem} % Avoir des puces agréables.
+\RequirePackage{hyperref} % Liens internes
+\setcounter{secnumdepth}{3} % profondeur de la numérotation
+\setcounter{tocdepth}{3} %  profondeur de la table des matières
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Déclaration des options
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@french \@frenchfalse
+\newif\if@forME \@forMEfalse 
+
+\DeclareOption{french}{\@frenchtrue}
+\DeclareOption{forME}{\@forMEtrue}
+\DeclareOption*{}
+\ProcessOptions
+
+%% Quelques rappels sur la créaction de commande
+%%  \newcommand{\nom}[5][default1][default2]{definition}
+%%      -> ex: \newcommand{\derive}[3][\null]{\frac{\d^{#1}{#2}}{\d{#3}^{#1}}}
+\newcommand{\TestTemplates}[1][\null]{
+    \Fcal
+    \ifthenelse{\equal{#1}{\null}}{^t}{(#1)}
+}
+%%  Si \auteur est suivi d'une étoile appeler \sauteur, sinon \oauteur
+%%      -> \newcommand{\auteur}{\@ifstar\sauteur\oauteur}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% NOTATIONS GENERALES
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{xcolor}
+
+\newcommand{\toDO}[1]{\textbf{\if@forME \textcolor{red}{#1} \else #1 \fi}}
+\newcommand{\onlyME}[1]{\textcolor{blue}{\if@forME #1\else \fi}}
+\newcommand{\idea}[1]{\textcolor{teal}{\if@forME #1\else \fi}}
+
+\renewcommand{\hat}{\widehat}
+\renewcommand{\bar}{\overline}
+\renewcommand{\tilde}{\widetilde}
+
+% ------------------------------------------------------------------
+% Abbréviation
+% ------------------------------------------------------------------
+\newcommand{\wrt}{\text{w.r.t. }} 
+\newcommand{\st}{\if@french \text{t.q.} \else \text{s.t. } \fi} 
+\newcommand{\ie}{\textit{i.e. }} 
+\newcommand{\as}{\textit{a.s. }} 
+
+% ------------------------------------------------------------------
+% Délimiteurs X
+% ------------------------------------------------------------------
+\newcommand{\np}[1]{(#1)}
+\newcommand{\bp}[1]{\big( #1 \big)}
+\newcommand{\Bp}[1]{\Big( #1 \Big) }
+\newcommand{\bbp}[1]{\bigg( #1 \bigg) }
+\newcommand{\BBp}[1]{\Bigg( #1 \Bigg) }
+
+
+\newcommand{\nc}[1]{[#1]}
+\newcommand{\bc}[1]{\big[ #1 \big]}
+\newcommand{\Bc}[1]{\Big[ #1 \Big] }
+\newcommand{\bbc}[1]{\bigg[ #1 \bigg] }
+\newcommand{\BBc}[1]{\Bigg[ #1 \Bigg] }
+
+% ------------------------------------------------------------------
+% Ponctuations X
+% ------------------------------------------------------------------
+\newcommand{\eqsepv}{\; , \enspace}       
+\newcommand{\eqfinv}{\; ,}                
+\newcommand{\eqfinp}{\; .}                
+\newcommand{\eqfinpv}{\; ;} 
+\newcommand{\mtext}[1]{\quad \text{#1} \quad}
+
+% ------------------------------------------------------------------
+% Environments Mathématiques
+% ------------------------------------------------------------------
+\newcommand{\ignore}[1]{}
+\renewcommand{\qedsymbol}{$\blacksquare$} 
+
+
+\ifdefined\theorem\else \newtheorem{theorem}{\if@french Théorème\else Theorem\fi} \fi
+\ifdefined\proposition\else \newtheorem{proposition}[theorem]{\if@french Proposition\else Proposition\fi} \fi
+\ifdefined\corollary\else \newtheorem{corollary}[theorem]{\if@french Corollaire\else Corollary\fi} \fi
+\ifdefined\lemma\else \newtheorem{lemma}[theorem]{\if@french Lemme\else Lemma\fi} \fi
+\theoremstyle{definition}
+\ifdefined\definition\else \newtheorem{definition}[theorem]{\if@french Définition\else Definition\fi} \fi
+\ifdefined\hypothesis\else \newtheorem*{hypothesis*}{\if@french Hypothèse\else Assumption\fi} \fi
+\theoremstyle{remark}
+\ifdefined\remark\else \newtheorem{remark}[theorem]{\if@french Remarque\else Remark\fi} \fi
+\ifdefined\idea\else \newtheorem{idea}[theorem]{\if@french Idée\else Idea\fi} \fi
+\ifdefined\key\else \newtheorem{key}[theorem]{\if@french Point clé\else Keypoint\fi} \fi
+\ifdefined\question\else \newtheorem{question}{\if@french Question\else Question\fi} \fi
+\ifdefined\toolbox\else \newtheorem{toolbox}[theorem]{\if@french Boite à outils\else Tool Box\fi} \fi
+    
+
+% ------------------------------------------------------------------
+% Typography
+% ------------------------------------------------------------------
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Kcal}{\mathcal{K}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Wcal}{\mathcal{W}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\Zcal}{\mathcal{Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% NOTATION SPECIFIQUES
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ------------------------------------------------------------------
+% Théorie des ensembles
+% ------------------------------------------------------------------
+\newcommand{\sequence}[2]{\left(#1\right)_{#2}}         % Suite
+\newcommand{\set}[2]{\left\{#1 : #2 \right\}}           % Ensemble
+\newcommand{\1}[1]{\mathds{1}_{#1}}
+\newcommand{\ind}[1]{\mathds{1}_{#1}}
+\newcommand{\function}[5]{\begin{array}{l|ccc}
+            #1: & #2 & \longrightarrow & #3 \\
+                & #4 & \longmapsto &     #5 \end{array}}
+                
+% ------------------------------------------------------------------
+% Opération et loi de composition
+% ------------------------------------------------------------------
+\newcommand{\commute}[3][\null]{#2 #1 #3 = #3 #1 #2}
+
+% ------------------------------------------------------------------
+% Linear Algebrea
+% ------------------------------------------------------------------
+
+
+\newcommand{\MATRIX}[2]{\mathcal{M}_{#1} \left(#2\right)}
+\newcommand{\matrice}{A}
+\newcommand{\matricebis}{B}
+\newcommand{\matriceter}{C}
+\newcommand{\Matrix}{M}
+\newcommand{\Matrixbis}{N}
+\newcommand{\matdiag}{D}
+\newcommand{\matbase}{P}
+\newcommand{\transp}{^{\top}}                               % Transposition
+
+\newcommand{\vect}{\if@french \operatorname{Vect} \else \operatorname{Span} \fi}
+
+
+% ------------------------------------------------------------------
+% Integration
+% ----------------------------------------------------------------
+\newcommand{\du}{\, \mathrm du}
+\newcommand{\dt}{\, \mathrm dt}
+\newcommand{\dx}{\, \mathrm dx}
+\newcommand{\dy}{\, \mathrm dy}
+\newcommand{\ds}{\, \mathrm ds}
+\newcommand{\dz}{\, \mathrm dz}
+
+% ------------------------------------------------------------------
+% Probability
+% ----------------------------------------------------------------
+\newcommand{\event}{\omega}
+\newcommand{\EVENTS}{\Omega}
+\newcommand{\proba}{\mathbb{P}}
+\newcommand{\tribu}{\mathcal{A}}
+\newcommand{\probaspace}{(\EVENTS, \tribu, \proba)}
+
+\newcommand{\iid}{\textit{i.i.d.} }
+
+\newcommand{\espe}{\mathbb{E}}   % Espérance 
+\newcommand{\var}{\operatorname{Var}}    % Variance
+
+
+\newcommand{\fctcar}[1]{\varphi_{#1}}
+
+% Loi classique
+\newcommand{\BETA}[2]{\mathbf{B}\np{#1,  #2}}
+\newcommand{\BINOMIAL}[2]{\mathcal{B}\np{#1, #2}}
+\newcommand{\POISSON}[1]{\mathcal{P}\np{#1}}
+
+% Terme classique 
+\newcommand{\noise}{\varepsilon}
+
+
+% ------------------------------------------------------------------
+% Optimization
+% ----------------------------------------------------------------
+
+\newcommand{\argmin}{\mathop{\arg\min}} 
+\newcommand{\argmax}{\mathop{\arg\max}} 
+\newcommand{\arginf}{\mathop{\arg\inf}} 
+\newcommand{\argsup}{\mathop{\arg\sup}} 
+
+\newcommand{\KL}{\mathop{KL}} 
+
+
+%%%%%%%% Fin du package %%%%%%%%

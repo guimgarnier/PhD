@@ -6,6 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum} % À proscrire dans un vrai mémoire de thèse !
 \usepackage{hyperref}
+\usepackage{aquabox}
 
 \input{macros/preambule}
 
@@ -19,10 +20,9 @@
 \input{macros/macros}
 \input{macros/color}
 % la bibliographie
-\usepackage[backend=biber, maxbibnames=6, maxcitenames=6,
-mincitenames=1, firstinits=true, doi=false,isbn=false,url=false]{biblatex}
+\usepackage[backend=biber, maxbibnames=6, maxcitenames=6,mincitenames=1, firstinits=true, doi=false,isbn=false,url=false]{biblatex}
 
-\addbibresource{bibliographie.bib}
+\addbibresource{bibliographie}
 
 \begin{document}
 
@@ -71,18 +71,19 @@ mincitenames=1, firstinits=true, doi=false,isbn=false,url=false]{biblatex}
 \chapter{Introduction}
     \input{chapters/chapitre1}
 \section{Motivation}
+\section{Elements of literature}
 
 \chapter{Description of the biological question}
     \input{chapters/biological_description}
 
-\part{The theorical stuff}
+\part{Theorical Analysis}
 \chapter{Statistical modelling}
-    \section{Statistical approach method 1 - Decompounding noise}
-    \section{Statistical approach method 2 - Multiplicative Decompounding}
-
+    \input{chapters/stats/main}
 \chapter{PDEs modelling}
+    \input{chapters/edp/article}
 
 \part{Data Analysis}
+\chapter{Application of the decompounding method}
 \chapter{Multimodality}
     \input{chapters/chapitre_bimodality}
 %\section{The moment problem}
